@@ -36,7 +36,7 @@ public class TextBasedVersion : MonoBehaviour
         theComputer.Add("spear");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (glory > 4 || glory < -4)
         {
@@ -248,16 +248,44 @@ public class TextBasedVersion : MonoBehaviour
     void Inventory()
     {
         print("You decided to open your inventory");
+        int x = 0;
         foreach (string a in thePlayer)
         {
-            print(a);
+            x++;
+            print(x + " - " + a);
         }
+        /*
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            //sword
+            p = thePlayer.IndexOf("sword");
+            print("You have swapped to " + thePlayer[p]);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            //hammer
+            p = thePlayer.IndexOf("hammer");
+            print("You have swapped to " + thePlayer[p]);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            //spear
+            p = thePlayer.IndexOf("spear");
+            print("You have swapped to " + thePlayer[p]);
+        }*/
+        if (p > thePlayer.IndexOf("spear"))
+        {
+            p = thePlayer.IndexOf("sword");
+        }
+
         print("You are currently holding " + thePlayer[p]);
         p = p + 1;
-        if (p > thePlayer.Count)
+
+        if (p >= thePlayer.Count)
         {
             p = 0;
         }
         print("You have swapped to " + thePlayer[p]);
+        
     }
 }
