@@ -6,9 +6,15 @@ public class TextBasedVersion : MonoBehaviour
 {
     //variables
     bool actionSelected = false;
-    string playerWeapon = "sword";
-    string enemyWeapon;
     int playerAction;
+
+    //inventories for both sides
+    List<string> thePlayer = new List<string>();
+    List<string> theComputer = new List<string>();
+
+    //to maintain what the held weapon is
+    int p = 0;
+    int c = 0;
 
     //if glory reaches 5 player wins if reaches -5 ai wins
     int glory = 0;
@@ -18,6 +24,16 @@ public class TextBasedVersion : MonoBehaviour
     {
         //welcoming the player to the game
         print("Welcome to Coliseum");
+
+        //for the user
+        thePlayer.Add("sword");
+        thePlayer.Add("hammer");
+        thePlayer.Add("spear");
+
+        //for the ai
+        theComputer.Add("sword");
+        theComputer.Add("hammer");
+        theComputer.Add("spear");
     }
 
     void Update()
@@ -49,6 +65,7 @@ public class TextBasedVersion : MonoBehaviour
                 }
                 if (Input.GetKeyDown("2"))
                 {
+                    Debug.Log("2 key was pressed.");
                     playerAction = 2;
                     actionSelected = true;
                     //if wanting to defend
@@ -56,20 +73,15 @@ public class TextBasedVersion : MonoBehaviour
                 }
                 if (Input.GetKeyDown("3"))
                 {
+                    Debug.Log("3 key was pressed.");
                     playerAction = 3;
                     actionSelected = true;
                     //if wanting to swap weapons
-                    playerWeapon = Inventory();
+                    Inventory();
                 }
             }
             actionSelected = false;
-            //nothing happens
-            /* if (Input.GetKeyDown(KeyCode.Space))
-            {
-                playerChoice();
-            }*/
         }
-
     }
 
     //player making a choice
@@ -101,39 +113,38 @@ public class TextBasedVersion : MonoBehaviour
     //used for anything enemy related
     void Enemy(int player)
     {
-        string enemyWeapon = EnemyChoice();
+        EnemyChoice();
         if (player == 1)
         {
             print("You chose to attack");
-            WeaponTriangle(player, playerWeapon, enemyWeapon);
+            WeaponTriangle(player);
 
         }
         if (player == 2)
         {
             print("You decided to try and defend");
-            WeaponTriangle(player, playerWeapon, enemyWeapon);
+            WeaponTriangle(player);
         }
     }
 
-    public string EnemyChoice()
+    void EnemyChoice()
     {
         int chance = Random.Range(0, 2);
         if (chance == 0)
         {
-            enemyWeapon = "sword";
+            c = 0;
         }
         if (chance == 1)
         {
-            enemyWeapon = "hammer";
+            c = 1;
         }
         if (chance == 2)
         {
-            enemyWeapon = "spear";
+            c = 2;
         }
-        return enemyWeapon;
     }
 
-    void WeaponTriangle(int action, string player, string enemy)
+    void WeaponTriangle(int action)
     {
         //if action = 1 it is attack if 2 then defend
         int enemyAction = Random.Range(0, 1);
@@ -144,50 +155,51 @@ public class TextBasedVersion : MonoBehaviour
             {
                 //player attacks
                 print("Both sides chose to attack");
-                if (player == enemy)
+                if (thePlayer[p] == theComputer[c])
                 {
                     //same weapon
-                    print("Both sides tried to attack with " + player + "s, resulting in a clash");
+                    print("Both sides tried to attack with " + thePlayer[p] + "s, resulting in a clash. Nothing was won");
                 }
 
-                if (player == "sword" && enemy == "spear" || player == "spear" && enemy == "hammer" || player == "hammer" && enemy == "sword")
+                if (thePlayer[p] == "sword" && theComputer[c] == "spear" || thePlayer[p] == "spear" && theComputer[c] == "hammer" || thePlayer[p] == "hammer" && theComputer[c] == "sword")
                 {
                     //player wins
                     glory = glory + 2;
-                    print("You used a " + player + ", while your opponent used a " + enemy);
+                    print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You won that round.");
                 }
 
-                if (enemy == "sword" && player == "spear" || enemy == "spear" && player == "hammer" || enemy == "hammer" && player == "sword")
+                if (theComputer[c] == "sword" && thePlayer[p] == "spear" || theComputer[c] == "spear" && thePlayer[p] == "hammer" || theComputer[c] == "hammer" && thePlayer[p] == "sword")
                 {
                     //player loses
                     glory = glory - 2;
-                    print("You used a " + player + ", while your opponent used a " + enemy);
+                    print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You lost that round.");
                 }
             }
             else
             {
                 //player defends
                 print("You defended from the opponent's attack");
-                if (player == enemy)
+                if (thePlayer[p] == theComputer[c])
                 {
                     //same weapon
                     glory = glory - 1;
-                    print("Both sides used " + player + "s, resulting in a clash");
+                    print("Both sides used " + thePlayer[p] + "s, resulting in a clash. Nothing was won");
                 }
 
-                if (player == "sword" && enemy == "spear" || player == "spear" && enemy == "hammer" || player == "hammer" && enemy == "sword")
+                if (thePlayer[p] == "sword" && theComputer[c] == "spear" || thePlayer[p] == "spear" && theComputer[c] == "hammer" || thePlayer[p] == "hammer" && theComputer[c] == "sword")
                 {
                     //player wins
                     glory = glory + 1;
                     //breaks opponent weapon
-                    print("You used a " + player + ", while your opponent used a " + enemy);
+                    theComputer.RemoveAt(c);
+                    print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + " which you managed to break. You won that round");
                 }
 
-                if (enemy == "sword" && player == "spear" || enemy == "spear" && player == "hammer" || enemy == "hammer" && player == "sword")
+                if (theComputer[c] == "sword" && thePlayer[p] == "spear" || theComputer[c] == "spear" && thePlayer[p] == "hammer" || theComputer[c] == "hammer" && thePlayer[p] == "sword")
                 {
                     //player loses
                     glory = glory - 2;
-                    print("You used a " + player + ", while your opponent used a " + enemy);
+                    print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You lost that round.");
                 }
             }
         }
@@ -198,27 +210,29 @@ public class TextBasedVersion : MonoBehaviour
             {
                 //player attacks
                 print("You attacked while your opponent defended");
-                if (player == enemy)
+                if (thePlayer[p] == theComputer[c])
                 {
                     //same weapon
                     glory = glory - 1;
-                    print("Both sides used " + player + "s, resulting in a clash");
+                    print("Both sides used " + thePlayer[p] + "s, resulting in your opponent defended from your attack. You Lost");
                 }
 
-                if (player == "sword" && enemy == "spear" || player == "spear" && enemy == "hammer" || player == "hammer" && enemy == "sword")
+                if (thePlayer[p] == "sword" && theComputer[c] == "spear" || thePlayer[p] == "spear" && theComputer[c] == "hammer" || thePlayer[p] == "hammer" && theComputer[c] == "sword")
                 {
                     //player wins
                     glory = glory + 1;
                     //breaks opponent weapon
-                    print("You used a " + player + ", while your opponent used a " + enemy);
+                    theComputer.RemoveAt(c);
+                    print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + " which you managed to break. You won that round");
                 }
 
-                if (enemy == "sword" && player == "spear" || enemy == "spear" && player == "hammer" || enemy == "hammer" && player == "sword")
+                if (theComputer[c] == "sword" && thePlayer[p] == "spear" || theComputer[c] == "spear" && thePlayer[p] == "hammer" || theComputer[c] == "hammer" && thePlayer[p] == "sword")
                 {
                     //player loses
                     glory = glory - 1;
                     //breaks own weapon
-                    print("You used a " + player + ", while your opponent used a " + enemy);
+                    thePlayer.RemoveAt(p);
+                    print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". Although your weapon broke, you managed to lose");
                 }
             }
             else
@@ -231,26 +245,19 @@ public class TextBasedVersion : MonoBehaviour
     }
 
     //used for the inventory
-    public string Inventory()
+    void Inventory()
     {
-        string weapon = "";
         print("You decided to open your inventory");
-        print("| 4 = sword | 5 = hammer | 6 = spear |");
-        if (Input.GetKeyDown("4"))
+        foreach (string a in thePlayer)
         {
-            weapon = "sword";
-            print("You know are using " + weapon);
+            print(a);
         }
-        if (Input.GetKeyDown("5"))
+        print("You are currently holding " + thePlayer[p]);
+        p = p + 1;
+        if (p > thePlayer.Count)
         {
-            weapon = "hammer";
-            print("You know are using " + weapon);
+            p = 0;
         }
-        if (Input.GetKeyDown("6"))
-        {
-            weapon = "spear";
-            print("You know are using " + weapon);
-        }
-        return weapon;
+        print("You have swapped to " + thePlayer[p]);
     }
 }
