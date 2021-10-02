@@ -25,13 +25,13 @@ public class SceneTransitions : MonoBehaviour
 
     public void StartTutorial()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Debug.Log("Start Tutorial...");
     }
 
     public void SkipTutorial()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         Debug.Log("Skip Tutorial...");
     }
 
