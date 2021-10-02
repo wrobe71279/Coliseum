@@ -19,6 +19,11 @@ public class TextBasedVersion : MonoBehaviour
     //if glory reaches 5 player wins if reaches -5 ai wins
     int glory = 0;
 
+    //variables for round timings
+    float roundTimer = 60;
+    bool availableTime = true;
+    float seconds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,30 +39,54 @@ public class TextBasedVersion : MonoBehaviour
         theComputer.Add("sword");
         theComputer.Add("hammer");
         theComputer.Add("spear");
+
+        //making roundTimer to seconds
+        seconds = Mathf.FloorToInt(roundTimer % 60);
+    }
+
+    private void Update()
+    {
+        if (availableTime == true)
+        {
+            if (roundTimer > 0)
+            {
+                roundTimer -= Time.deltaTime;
+                seconds = Mathf.FloorToInt(roundTimer % 60);
+            }
+        }
+        
     }
 
     void FixedUpdate()
     {
-        if (glory > 4 || glory < -4)
+        //checking if the win condition has been met
+        if (glory > 4 || glory < -4 || seconds <= 0)
         {
             //the game ends
             if (glory > 4)
             {
                 print("You have won");
+                //possibly a cutscene
+
+                //change to victory scene
             }
             else
             {
                 print("You have lost");
+                availableTime = false;
+                //possibly a cutscene
+                //change to main menu but no menu at this stage
+                Application.Quit();
             }
         }
         else
         {
             if (actionSelected == false)
             {
+                roundTimer = 60;
                 print("What would you like to do? | 1 = Attack | 2 = Defend | 3 = Switch Weapon |");
                 if (Input.GetKeyDown("1"))
                 {
-                    Debug.Log("1 key was pressed.");
                     playerAction = 1;
                     actionSelected = true;
                     //if wanting to attack
@@ -65,7 +94,6 @@ public class TextBasedVersion : MonoBehaviour
                 }
                 if (Input.GetKeyDown("2"))
                 {
-                    Debug.Log("2 key was pressed.");
                     playerAction = 2;
                     actionSelected = true;
                     //if wanting to defend
@@ -73,7 +101,6 @@ public class TextBasedVersion : MonoBehaviour
                 }
                 if (Input.GetKeyDown("3"))
                 {
-                    Debug.Log("3 key was pressed.");
                     playerAction = 3;
                     actionSelected = true;
                     //if wanting to swap weapons
@@ -83,32 +110,6 @@ public class TextBasedVersion : MonoBehaviour
             actionSelected = false;
         }
     }
-
-    //player making a choice
-    /*void playerChoice()
-    {
-        print("What would you like to do? | 1 = Attack | 2 = Defend | 3 = Switch Weapon |");
-        if (Input.GetKeyDown("1"))
-        {
-            Debug.Log("1 key was pressed.");
-            playerAction = 1;
-            //if wanting to attack
-            Enemy(playerAction);
-        }
-        if (Input.GetKeyDown("2"))
-        {
-             playerAction = 2;
-             //if wanting to defend
-             Enemy(playerAction);
-        }
-        if (Input.GetKeyDown("3"))
-        {
-             playerAction = 3;
-             //if wanting to swap weapons
-             playerWeapon = Inventory();
-        }
-
-    } */
 
     //used for anything enemy related
     void Enemy(int player)
@@ -247,44 +248,30 @@ public class TextBasedVersion : MonoBehaviour
     //used for the inventory
     void Inventory()
     {
+        //telling the user that they have opened their inventory
         print("You decided to open your inventory");
+        //used to help people keep track of how many weapons they have
         int x = 0;
+        //goes through each string in the list and does the loop for each one
         foreach (string a in thePlayer)
         {
             x++;
             print(x + " - " + a);
         }
-        /*
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            //sword
-            p = thePlayer.IndexOf("sword");
-            print("You have swapped to " + thePlayer[p]);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            //hammer
-            p = thePlayer.IndexOf("hammer");
-            print("You have swapped to " + thePlayer[p]);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            //spear
-            p = thePlayer.IndexOf("spear");
-            print("You have swapped to " + thePlayer[p]);
-        }*/
-        if (p > thePlayer.IndexOf("spear"))
-        {
-            p = thePlayer.IndexOf("sword");
-        }
-
-        print("You are currently holding " + thePlayer[p]);
-        p = p + 1;
-
+        //trying to keep the player's weapon viable
         if (p >= thePlayer.Count)
         {
             p = 0;
         }
+        //telling the player what they are currently holding
+        print("You are currently holding " + thePlayer[p]);
+        p = p + 1;
+        //similar to the if before it is used to maintain the weapon in the list
+        if (p >= thePlayer.Count)
+        {
+            p = 0;
+        }
+        //telling the player what their new weapon is
         print("You have swapped to " + thePlayer[p]);
         
     }
