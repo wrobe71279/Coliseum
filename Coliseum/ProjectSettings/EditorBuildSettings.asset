@@ -9,7 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuScene.unity
     guid: a3f289f9129d72740bcfb355b38507bf
   - enabled: 1
-    path: Assets/Scenes/TutorialScene.unity
+    path: Assets/Scenes/FirstTutorial.unity
+    guid: 2c4eb590378db774a8cc901463610cb1
+  - enabled: 1
+    path: Assets/Scenes/SecondTutorial.unity
+    guid: f4270e728d864e8429fd95211746ea4e
+  - enabled: 1
+    path: Assets/Scenes/ThirdTutorial.unity
+    guid: f5214e74aa9262646b5a03d12898f3bd
+  - enabled: 1
+    path: Assets/Scenes/FinalTutorial.unity
     guid: 8d50902e572ca144cbb219dbe46c13c9
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
