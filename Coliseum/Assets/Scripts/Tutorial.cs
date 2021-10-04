@@ -102,6 +102,9 @@ public class Tutorial : MonoBehaviour
              * tells player to switch and choose the spear
              */
             y = 3;
+
+            logText.text = ("You defended from the opponent's attack. ");
+            logText.text += ("You used a sword, while your opponent used a spear. You lost that round.");
             inital.text = "You're Opponent swapped weapons and therefore beat you";
 
             first.SetActive(false);
