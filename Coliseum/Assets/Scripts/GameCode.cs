@@ -40,6 +40,8 @@ public class GameCode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
+        
         //for the user
         thePlayer.Add("sword");
         thePlayer.Add("hammer");
@@ -73,6 +75,7 @@ public class GameCode : MonoBehaviour
                         //possibly a cutscene
                         //change to victory scene
                         VictoryPanel.SetActive(true);
+                        Time.timeScale = 0;
                     }
                     else
                     {
@@ -80,13 +83,14 @@ public class GameCode : MonoBehaviour
                         //possibly a cutscene
                         //change to main menu but no menu at this stage
                         DefeatPanel.SetActive(true);
+                        Time.timeScale = 0;
                     }
                 }
             }
             else
             {
                 DefeatPanel.SetActive(true);
-                Application.Quit();
+                Time.timeScale = 0;
                 //losing animation due to time
             }
         }
