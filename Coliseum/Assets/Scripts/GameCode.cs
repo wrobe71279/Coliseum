@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameCode : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class GameCode : MonoBehaviour
 
     //to trigger SetGlory function in UI
     public GlorySlider glorySlider;
+
+    //to display Log in LogText UI
+    public Text logText;
 
     // Start is called before the first frame update
     void Start()
@@ -109,16 +113,19 @@ public class GameCode : MonoBehaviour
     //for swapping weapons
     public void Sword()
     {
+        logText.text = ("You switched weapon to a Sword. ");
         p = thePlayer.IndexOf("sword");
     }
 
     public void Hammer()
     {
+        logText.text = ("You switched weapon to a Hammer. ");
         p = thePlayer.IndexOf("hammer");
     }
 
     public void Spear()
     {
+        logText.text = ("You switched weapon to a Spear. ");
         p = thePlayer.IndexOf("spear");
     }
 
@@ -128,39 +135,39 @@ public class GameCode : MonoBehaviour
         if (enemyAction == 0)
         {
             //both attack
-            print("Both sides chose to attack");
+            logText.text = ("Both sides chose to attack. ");
             if (thePlayer[p] == theComputer[c])
             {
                 //same weapon
-                print("Both sides tried to attack with " + thePlayer[p] + "s, resulting in a clash. Nothing was won");
+                logText.text += ("Both sides tried to attack with " + thePlayer[p] + "s, resulting in a clash. Nothing was won");
             }
             if (thePlayer[p] == "sword" && theComputer[c] == "spear" || thePlayer[p] == "spear" && theComputer[c] == "hammer" || thePlayer[p] == "hammer" && theComputer[c] == "sword")
             {
                 //player wins
                 glory = glory + 2;
                 glorySlider.SetGlory(glory);
-                print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You won that round.");
+                logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You won that round.");
             }
             if (theComputer[c] == "sword" && thePlayer[p] == "spear" || theComputer[c] == "spear" && thePlayer[p] == "hammer" || theComputer[c] == "hammer" && thePlayer[p] == "sword")
             {
                 //player loses
                 glory = glory - 2;
                 glorySlider.SetGlory(glory);
-                print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You lost that round.");
+                logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You lost that round.");
             }
         }
         else
         {
             //enemy defends
             //player attacks
-            print("You attacked while your opponent defended");
+            logText.text = ("You attacked while your opponent defended. ");
 
             if (thePlayer[p] == theComputer[c])
             {
                 //same weapon
                 glory = glory - 1;
                 glorySlider.SetGlory(glory);
-                print("Both sides used " + thePlayer[p] + "s, resulting in your opponent defended from your attack. You Lost");
+                logText.text += ("Both sides used " + thePlayer[p] + "s, resulting in your opponent defended from your attack. You Lost");
             }
             if (thePlayer[p] == "sword" && theComputer[c] == "spear" || thePlayer[p] == "spear" && theComputer[c] == "hammer" || thePlayer[p] == "hammer" && theComputer[c] == "sword")
             {
@@ -169,7 +176,7 @@ public class GameCode : MonoBehaviour
                 glorySlider.SetGlory(glory);
                 //breaks opponent weapon
                 theComputer.RemoveAt(c);
-                print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + " which you managed to break. You won that round");
+                logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + " which you managed to break. You won that round");
             }
             if (theComputer[c] == "sword" && thePlayer[p] == "spear" || theComputer[c] == "spear" && thePlayer[p] == "hammer" || theComputer[c] == "hammer" && thePlayer[p] == "sword")
             {
@@ -178,7 +185,7 @@ public class GameCode : MonoBehaviour
                 glorySlider.SetGlory(glory);
                 //breaks own weapon
                 thePlayer.RemoveAt(p);
-                print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". Although your weapon broke, you managed to lose");
+                logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". Although your weapon broke, you managed to lose");
             }
         }
     }
@@ -188,13 +195,13 @@ public class GameCode : MonoBehaviour
         if (enemyAction == 0)
         {
             //player defends
-            print("You defended from the opponent's attack");
+            logText.text = ("You defended from the opponent's attack. ");
             if (thePlayer[p] == theComputer[c])
             {
                 //same weapon
                 glory = glory - 1;
                 glorySlider.SetGlory(glory);
-                print("Both sides used " + thePlayer[p] + "s, resulting in a clash. Nothing was won");
+                logText.text += ("Both sides used " + thePlayer[p] + "s, resulting in a clash. Nothing was won");
             }
 
             if (thePlayer[p] == "sword" && theComputer[c] == "spear" || thePlayer[p] == "spear" && theComputer[c] == "hammer" || thePlayer[p] == "hammer" && theComputer[c] == "sword")
@@ -204,7 +211,7 @@ public class GameCode : MonoBehaviour
                 glorySlider.SetGlory(glory);
                 //breaks opponent weapon
                 theComputer.RemoveAt(c);
-                print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + " which you managed to break. You won that round");
+                logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + " which you managed to break. You won that round");
             }
 
             if (theComputer[c] == "sword" && thePlayer[p] == "spear" || theComputer[c] == "spear" && thePlayer[p] == "hammer" || theComputer[c] == "hammer" && thePlayer[p] == "sword")
@@ -212,7 +219,7 @@ public class GameCode : MonoBehaviour
                 //player loses
                 glory = glory - 2;
                 glorySlider.SetGlory(glory);
-                print("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You lost that round.");
+                logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You lost that round.");
             }
         }
         else

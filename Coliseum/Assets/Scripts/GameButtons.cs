@@ -34,19 +34,19 @@ public class GameButtons : MonoBehaviour
 
     public void HammerButton()
     {
-        Debug.Log("Hammer chosen");
+        //Debug.Log("Hammer chosen");
         Return();
     }
 
     public void SwordButton()
     {
-        Debug.Log("Sword chosen");
+        //Debug.Log("Sword chosen");
         Return();
     }
 
     public void SpearButton()
     {
-        Debug.Log("Spear chosen");
+        //Debug.Log("Spear chosen");
         Return();
     }
 }
