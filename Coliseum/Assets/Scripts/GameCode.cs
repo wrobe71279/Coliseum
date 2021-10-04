@@ -27,6 +27,10 @@ public class GameCode : MonoBehaviour
     //to display Log in LogText UI
     public Text logText;
 
+    //to display Victory/Defeat Screens
+    public GameObject VictoryPanel;
+    public GameObject DefeatPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,21 +65,20 @@ public class GameCode : MonoBehaviour
                     {
                         //possibly a cutscene
                         //change to victory scene
-                        Debug.Log("Victory");
+                        VictoryPanel.SetActive(true);
                     }
                     else
                     {
                         availableTime = false;
                         //possibly a cutscene
                         //change to main menu but no menu at this stage
-                        Debug.Log("Defeat");
-                        Application.Quit();
+                        DefeatPanel.SetActive(true);
                     }
                 }
             }
             else
             {
-                Debug.Log("Defeat");
+                DefeatPanel.SetActive(true);
                 Application.Quit();
                 //losing animation due to time
             }

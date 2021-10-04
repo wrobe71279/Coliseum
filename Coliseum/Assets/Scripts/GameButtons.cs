@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameButtons : MonoBehaviour
 {
@@ -48,5 +49,15 @@ public class GameButtons : MonoBehaviour
     {
         //Debug.Log("Spear chosen");
         Return();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(sceneName: "GameScene");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(sceneName: "MainMenuScene");
     }
 }
