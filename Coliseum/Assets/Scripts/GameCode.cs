@@ -54,18 +54,21 @@ public class GameCode : MonoBehaviour
                     {
                         //possibly a cutscene
                         //change to victory scene
+                        Debug.Log("Victory");
                     }
                     else
                     {
                         availableTime = false;
                         //possibly a cutscene
                         //change to main menu but no menu at this stage
+                        Debug.Log("Defeat");
                         Application.Quit();
                     }
                 }
             }
             else
             {
+                Debug.Log("Defeat");
                 Application.Quit();
                 //losing animation due to time
             }
