@@ -16,10 +16,16 @@ public class GameCode : MonoBehaviour
     //if glory reaches 5 player wins if reaches -5 ai wins
     int glory = 0;
 
-    //variables for round timings
+    /* TIME CONSTRAINT VARIABLES
+     * these round time variables and code was found at https://gamedevbeginner.com/how-to-make-countdown-timer-in-unity-minutes-seconds/#convert_to_text
+     * this was a very helpful website for learning how to get a float to showcase seconds and then set it up in unity for us in Coliseum we used
+     * this to help with our time constraint
+    */
     float roundTimer = 60;
     bool availableTime = true;
     float seconds;
+    //showcasing time left to the player
+    public Text timerText;
 
     //to trigger SetGlory function in UI
     public GlorySlider glorySlider;
@@ -57,6 +63,7 @@ public class GameCode : MonoBehaviour
             {
                 roundTimer -= Time.deltaTime;
                 seconds = Mathf.FloorToInt(roundTimer % 60);
+                DisplayTime();
                 //checking if the win condition has been met
                 if (glory > 4 || glory < -4 || seconds <= 0 || thePlayer.Count <= 0 || theComputer.Count <= 0)
                 {
@@ -83,6 +90,11 @@ public class GameCode : MonoBehaviour
                 //losing animation due to time
             }
         }
+    }
+
+    public void DisplayTime()
+    {
+        timerText.text = string.Format("{0:00}:{1:00}", 0, seconds);
     }
     void EnemyChoice()
     {
@@ -191,6 +203,7 @@ public class GameCode : MonoBehaviour
                 logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". Although your weapon broke, you managed to lose");
             }
         }
+        roundTimer = 60;
     }
     public void PlayerDefends()
     {
@@ -229,6 +242,6 @@ public class GameCode : MonoBehaviour
         {
             //nothing happens
         }
-
+        roundTimer = 60;
     }
 }
