@@ -98,7 +98,7 @@ public class GameCode : MonoBehaviour
     }
     void EnemyChoice()
     {
-        int chance = Random.Range(0, 3);
+        int chance = Random.Range(0, (theComputer.Count + 1));
         if (chance == 0)
         {
             c = 0;
@@ -146,7 +146,7 @@ public class GameCode : MonoBehaviour
 
     public void PlayerAttacks()
     {
-        int enemyAction = Random.Range(0, 1);
+        int enemyAction = Random.Range(0, 2);
         if (enemyAction == 0)
         {
             //both attack
@@ -156,14 +156,14 @@ public class GameCode : MonoBehaviour
                 //same weapon
                 logText.text += ("Both sides tried to attack with " + thePlayer[p] + "s, resulting in a clash. Nothing was won");
             }
-            if (thePlayer[p] == "sword" && theComputer[c] == "spear" || thePlayer[p] == "spear" && theComputer[c] == "hammer" || thePlayer[p] == "hammer" && theComputer[c] == "sword")
+            if ((thePlayer[p] == "sword" && theComputer[c] == "spear") || (thePlayer[p] == "spear" && theComputer[c] == "hammer") || (thePlayer[p] == "hammer" && theComputer[c] == "sword"))
             {
                 //player wins
                 glory = glory + 2;
                 glorySlider.SetGlory(glory);
                 logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You won that round.");
             }
-            if (theComputer[c] == "sword" && thePlayer[p] == "spear" || theComputer[c] == "spear" && thePlayer[p] == "hammer" || theComputer[c] == "hammer" && thePlayer[p] == "sword")
+            if ((theComputer[c] == "sword" && thePlayer[p] == "spear") || (theComputer[c] == "spear" && thePlayer[p] == "hammer") || (theComputer[c] == "hammer" && thePlayer[p] == "sword"))
             {
                 //player loses
                 glory = glory - 2;
@@ -182,9 +182,9 @@ public class GameCode : MonoBehaviour
                 //same weapon
                 glory = glory - 1;
                 glorySlider.SetGlory(glory);
-                logText.text += ("Both sides used " + thePlayer[p] + "s, resulting in your opponent defended from your attack. You Lost");
+                logText.text += ("Both sides used " + thePlayer[p] + "s, resulting in your opponent defended your attack. You Lost");
             }
-            if (thePlayer[p] == "sword" && theComputer[c] == "spear" || thePlayer[p] == "spear" && theComputer[c] == "hammer" || thePlayer[p] == "hammer" && theComputer[c] == "sword")
+            if ((thePlayer[p] == "sword" && theComputer[c] == "spear") || (thePlayer[p] == "spear" && theComputer[c] == "hammer") || (thePlayer[p] == "hammer" && theComputer[c] == "sword"))
             {
                 //player wins
                 glory = glory + 1;
@@ -193,7 +193,7 @@ public class GameCode : MonoBehaviour
                 theComputer.RemoveAt(c);
                 logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + " which you managed to break. You won that round");
             }
-            if (theComputer[c] == "sword" && thePlayer[p] == "spear" || theComputer[c] == "spear" && thePlayer[p] == "hammer" || theComputer[c] == "hammer" && thePlayer[p] == "sword")
+            if ((theComputer[c] == "sword" && thePlayer[p] == "spear") || (theComputer[c] == "spear" && thePlayer[p] == "hammer") || (theComputer[c] == "hammer" && thePlayer[p] == "sword"))
             {
                 //player loses
                 glory = glory - 1;
@@ -207,7 +207,7 @@ public class GameCode : MonoBehaviour
     }
     public void PlayerDefends()
     {
-        int enemyAction = Random.Range(0, 1);
+        int enemyAction = Random.Range(0, 2);
         if (enemyAction == 0)
         {
             //player defends
@@ -215,7 +215,6 @@ public class GameCode : MonoBehaviour
             if (thePlayer[p] == theComputer[c])
             {
                 //same weapon
-                glory = glory - 1;
                 glorySlider.SetGlory(glory);
                 logText.text += ("Both sides used " + thePlayer[p] + "s, resulting in a clash. Nothing was won");
             }
@@ -241,6 +240,7 @@ public class GameCode : MonoBehaviour
         else
         {
             //nothing happens
+            logText.text += ("You both tried to defend. It was quite funny.");
         }
         roundTimer = 20;
     }
