@@ -1246,6 +1246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fa6d5471d03a74388c7dfd6c9754dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glorySlider: {fileID: 1458194102}
 --- !u!4 &1458194101
 Transform:
   m_ObjectHideFlags: 0
