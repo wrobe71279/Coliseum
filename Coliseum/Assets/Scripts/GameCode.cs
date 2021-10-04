@@ -47,10 +47,10 @@ public class GameCode : MonoBehaviour
                 roundTimer -= Time.deltaTime;
                 seconds = Mathf.FloorToInt(roundTimer % 60);
                 //checking if the win condition has been met
-                if (glory > 4 || glory < -4 || seconds <= 0)
+                if (glory > 4 || glory < -4 || seconds <= 0 || thePlayer.Count <= 0 || theComputer.Count <= 0)
                 {
                     //the game ends
-                    if (glory > 4)
+                    if (glory > 4 || theComputer.Count <= 0)
                     {
                         //possibly a cutscene
                         //change to victory scene
