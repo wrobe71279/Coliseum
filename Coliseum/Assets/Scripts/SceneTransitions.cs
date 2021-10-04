@@ -31,7 +31,7 @@ public class SceneTransitions : MonoBehaviour
 
     public void SkipTutorial()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene(sceneName: "GameScene");
         Debug.Log("Skip Tutorial...");
     }
 
