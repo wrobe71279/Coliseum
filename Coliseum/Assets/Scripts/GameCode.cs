@@ -21,7 +21,7 @@ public class GameCode : MonoBehaviour
      * this was a very helpful website for learning how to get a float to showcase seconds and then set it up in unity for us in Coliseum we used
      * this to help with our time constraint
     */
-    float roundTimer = 60;
+    float roundTimer = 20;
     bool availableTime = true;
     float seconds;
     //showcasing time left to the player
@@ -98,7 +98,7 @@ public class GameCode : MonoBehaviour
     }
     void EnemyChoice()
     {
-        int chance = Random.Range(0, 2);
+        int chance = Random.Range(0, 3);
         if (chance == 0)
         {
             c = 0;
@@ -203,7 +203,7 @@ public class GameCode : MonoBehaviour
                 logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". Although your weapon broke, you managed to lose");
             }
         }
-        roundTimer = 60;
+        roundTimer = 20;
     }
     public void PlayerDefends()
     {
@@ -242,6 +242,6 @@ public class GameCode : MonoBehaviour
         {
             //nothing happens
         }
-        roundTimer = 60;
+        roundTimer = 20;
     }
 }
