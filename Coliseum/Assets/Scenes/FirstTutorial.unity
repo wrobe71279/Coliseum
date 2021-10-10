@@ -2209,6 +2209,7 @@ MonoBehaviour:
     - Don't forget in order to win you must reach the max glory or break all your
       opponents weapons.
     - Don't let your opponent do this first otherwise you lose.
+    - Be careful in the coliseum you have limited time to make choices.
     - Now you can progress to the game!
 --- !u!114 &1303967661
 MonoBehaviour:

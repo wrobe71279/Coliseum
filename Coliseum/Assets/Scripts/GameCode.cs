@@ -37,6 +37,10 @@ public class GameCode : MonoBehaviour
     public GameObject VictoryPanel;
     public GameObject DefeatPanel;
 
+    //move between inventories
+    public GameObject ActionPanel;
+    public GameObject WeaponPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -130,22 +134,54 @@ public class GameCode : MonoBehaviour
     }
 
     //for swapping weapons
+    public void Return()
+    {
+        ActionPanel.SetActive(true);
+        WeaponPanel.SetActive(false);
+    }
+
     public void Sword()
     {
-        logText.text = ("You switched weapon to a Sword. ");
-        p = thePlayer.IndexOf("sword");
+        if (thePlayer.Contains("sword") == true)
+        {
+            logText.text = ("You switched weapon to a Sword. ");
+            p = thePlayer.IndexOf("sword");
+            Return();
+        }
+        else
+        {
+            logText.text = ("Your sword is broken. You cannot use it");
+        }
+
+        
     }
 
     public void Hammer()
     {
-        logText.text = ("You switched weapon to a Hammer. ");
-        p = thePlayer.IndexOf("hammer");
+        if (thePlayer.Contains("hammer") == true)
+        {
+            logText.text = ("You switched weapon to a Hammer. ");
+            p = thePlayer.IndexOf("hammer");
+            Return();
+        }
+        else
+        {
+            logText.text = ("Your hammer is broken. You cannot use it");
+        }
     }
 
     public void Spear()
     {
-        logText.text = ("You switched weapon to a Spear. ");
-        p = thePlayer.IndexOf("spear");
+        if (thePlayer.Contains("spear") == true)
+        {
+            logText.text = ("You switched weapon to a Spear. ");
+            p = thePlayer.IndexOf("spear");
+            Return();
+        }
+        else
+        {
+            logText.text = ("Your spear is broken. You cannot use it");
+        }
     }
 
     public void PlayerAttacks()
@@ -207,7 +243,7 @@ public class GameCode : MonoBehaviour
                 thePlayer.RemoveAt(p);                
             }
         }
-        roundTimer = 20;
+        roundTimer = 10;
     }
     public void PlayerDefends()
     {
@@ -248,6 +284,6 @@ public class GameCode : MonoBehaviour
             //nothing happens
             logText.text = ("You both tried to defend. It was quite funny.");
         }
-        roundTimer = 20;
+        roundTimer = 10;
     }
 }
