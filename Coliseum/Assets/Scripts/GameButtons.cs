@@ -33,6 +33,7 @@ public class GameButtons : MonoBehaviour
         WeaponPanel.SetActive(false);
     }
 
+    /*
     public void HammerButton()
     {
         //Debug.Log("Hammer chosen");
@@ -50,7 +51,7 @@ public class GameButtons : MonoBehaviour
         //Debug.Log("Spear chosen");
         Return();
     }
-
+    */
     public void RestartGame()
     {
         SceneManager.LoadScene(sceneName: "GameScene");
