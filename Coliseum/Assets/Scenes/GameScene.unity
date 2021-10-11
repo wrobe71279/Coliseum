@@ -1042,27 +1042,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560188620}
   m_CullTransparentMesh: 1
---- !u!1 &621776661 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4418095162605979718, guid: 4118cc0592bc25d46a0b61905b9f2a5b, type: 3}
-  m_PrefabInstance: {fileID: 1338128795}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &621776662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621776661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfb2659fda0cf9b42a2c0833d542fa64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedWeapon: 0
-  Sword: {fileID: 1351376626}
-  Hammer: {fileID: 183185677}
-  Spear: {fileID: 1790157138}
 --- !u!1 &653732683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,6 +2355,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097266548}
   m_CullTransparentMesh: 1
+--- !u!1 &1110285581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1110285583}
+  - component: {fileID: 1110285582}
+  m_Layer: 0
+  m_Name: WeaponManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1110285582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110285581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfb2659fda0cf9b42a2c0833d542fa64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedWeapon: 0
+  Sword: {fileID: 1351376626}
+  Hammer: {fileID: 183185677}
+  Spear: {fileID: 1790157138}
+--- !u!4 &1110285583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110285581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1199712861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,6 +2823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1856768409}
   glorySlider: {fileID: 1458194102}
+  weaponSwitch: {fileID: 1110285582}
   logText: {fileID: 216210512}
   VictoryPanel: {fileID: 2002099646}
   DefeatPanel: {fileID: 763588855}
@@ -3146,7 +3173,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 621776662}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponSwitch, Assembly-CSharp
         m_MethodName: SelectSword
         m_Mode: 1
@@ -3642,7 +3669,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 621776662}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponSwitch, Assembly-CSharp
         m_MethodName: SelectSpear
         m_Mode: 1
@@ -4145,7 +4172,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 621776662}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponSwitch, Assembly-CSharp
         m_MethodName: SelectHammer
         m_Mode: 1
@@ -4269,7 +4296,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4b91ea9ed801e00438ca7df1a16c7ba2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0

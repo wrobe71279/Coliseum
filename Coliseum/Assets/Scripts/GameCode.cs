@@ -30,6 +30,9 @@ public class GameCode : MonoBehaviour
     //to trigger SetGlory function in UI
     public GlorySlider glorySlider;
 
+    //to trigger SetGlory function in UI
+    public WeaponSwitch weaponSwitch;
+
     //to display Log in LogText UI
     public Text logText;
 
@@ -145,6 +148,7 @@ public class GameCode : MonoBehaviour
         if (thePlayer.Contains("sword") == true)
         {
             logText.text = ("You switched weapon to a Sword. ");
+            weaponSwitch.SelectSword();
             p = thePlayer.IndexOf("sword");
             Return();
         }
@@ -161,6 +165,7 @@ public class GameCode : MonoBehaviour
         if (thePlayer.Contains("hammer") == true)
         {
             logText.text = ("You switched weapon to a Hammer. ");
+            weaponSwitch.SelectHammer();
             p = thePlayer.IndexOf("hammer");
             Return();
         }
@@ -175,6 +180,7 @@ public class GameCode : MonoBehaviour
         if (thePlayer.Contains("spear") == true)
         {
             logText.text = ("You switched weapon to a Spear. ");
+            weaponSwitch.SelectSpear();
             p = thePlayer.IndexOf("spear");
             Return();
         }
@@ -240,7 +246,8 @@ public class GameCode : MonoBehaviour
                 glorySlider.SetGlory(glory);
                 //breaks own weapon
                 logText.text += ("You used a " + thePlayer[p] + ", against your opponent's " + theComputer[c] + ". You broke your " + thePlayer[p] + " and lost.");
-                thePlayer.RemoveAt(p);                
+                thePlayer.RemoveAt(p);
+                WeaponBreak();
             }
         }
         roundTimer = 10;
@@ -277,6 +284,7 @@ public class GameCode : MonoBehaviour
                 glorySlider.SetGlory(glory);
                 logText.text += ("You used a " + thePlayer[p] + ", but your opponent's " + theComputer[c] + " defends and breaks your " + thePlayer[p] + ".");
                 thePlayer.RemoveAt(p);
+                WeaponBreak();
             }
         }
         else
@@ -286,4 +294,13 @@ public class GameCode : MonoBehaviour
         }
         roundTimer = 10;
     }
+
+    void WeaponBreak()
+    {
+        logText.text += ("Choose another weapon.");
+        weaponSwitch.HideWeapon();
+        ActionPanel.SetActive(false);
+        WeaponPanel.SetActive(true);
+    }
+
 }

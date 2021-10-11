@@ -10,6 +10,11 @@ public class WeaponSwitch : MonoBehaviour
     public GameObject Hammer;
     public GameObject Spear;
 
+    /*
+    public GameObject ESword;
+    public GameObject EHammer;
+    public GameObject ESpear;
+    */
 
     /*
     private void Start()
@@ -34,6 +39,8 @@ public class WeaponSwitch : MonoBehaviour
         }
     }
     */
+
+    //Player Weapons
     public void SelectSword()
     {
         selectedWeapon = 0;
@@ -51,10 +58,50 @@ public class WeaponSwitch : MonoBehaviour
     }
     public void SelectSpear()
     {
-        selectedWeapon = 2;
         Sword.SetActive(false);
         Hammer.SetActive(false);
         Spear.SetActive(true);
     }
 
+    public void HideWeapon()
+    {
+        selectedWeapon = 0;
+        Sword.SetActive(false);
+        Hammer.SetActive(false);
+        Spear.SetActive(false);
+
+    }
+
+    /*
+    //Enemy Weapons
+    public void EnemySword()
+    {
+        ESword.SetActive(true);
+        EHammer.SetActive(false);
+        ESpear.SetActive(false);
+
+    }
+    public void EnemyHammer()
+    {
+        ESword.SetActive(false);
+        EHammer.SetActive(true);
+        ESpear.SetActive(false);
+    }
+    public void EnemySpear()
+    {
+        ESword.SetActive(false);
+        EHammer.SetActive(false);
+        ESpear.SetActive(true);
+    }
+
+    public void HideEnemyWeapon()
+    {
+        selectedWeapon = 0;
+        Sword.SetActive(false);
+        Hammer.SetActive(false);
+        Spear.SetActive(false);
+
+    }
+
+    */
 }
