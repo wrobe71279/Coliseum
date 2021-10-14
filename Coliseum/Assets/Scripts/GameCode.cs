@@ -21,7 +21,7 @@ public class GameCode : MonoBehaviour
      * this was a very helpful website for learning how to get a float to showcase seconds and then set it up in unity for us in Coliseum we used
      * this to help with our time constraint
     */
-    float roundTimer = 20;
+    float roundTimer = 10;
     bool availableTime = true;
     float seconds;
     //showcasing time left to the player
@@ -41,6 +41,18 @@ public class GameCode : MonoBehaviour
     public GameObject ActionPanel;
     public GameObject WeaponPanel;
 
+    //getting the AI to go first
+    int enemyAction;
+    int chance;
+    int chosen;
+    //keeping track of what the ai has done
+    public int attack;
+    public int defend;
+    public int newWeapon;
+
+    //for fuzzy logic
+    int turn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +71,6 @@ public class GameCode : MonoBehaviour
         //making roundTimer to seconds
         seconds = Mathf.FloorToInt(roundTimer % 60);
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -98,48 +109,89 @@ public class GameCode : MonoBehaviour
                 //losing animation due to time
             }
         }
+        if (turn == 0)
+        {
+            if (seconds >= 9)
+            {
+                EnemyChoice();
+            }
+        }
+        else
+        {
+            if (seconds == 5)
+            {
+                EnemyChoice();
+            }
+        }
     }
-
+    //to display the time in seconds for the user to see
     public void DisplayTime()
     {
         timerText.text = string.Format("{0:00}:{1:00}", 0, seconds);
     }
-    void EnemyChoice()
+    
+    //in order to get the enemy to make a choice uses random range
+    public void EnemyChoice()
     {
-        int chance = Random.Range(0,theComputer.Count);
-        if (chance == 0)
+        if (chosen == 0)
         {
-            c = 0;
+            //getting a random descision
+            enemyAction = Random.Range(0, 5);
+            chance = Random.Range(0, theComputer.Count);
+            if (enemyAction == 0 || enemyAction == 3)
+            {
+                logText.text = ("The enemy seems to be moving towards you. ");
+                enemyAction = 0;
+                attack++;
+            }
+            if (enemyAction == 1 || enemyAction == 4)
+            {
+                logText.text = ("The enemy is moving away from you. ");
+                enemyAction = 1;
+                defend++;
+            }
+            
+            if (enemyAction == 2)
+            {
+                logText.text = ("It seems that your enemy is changing weapons. ");
+                if (chance == 0)
+                {
+                    c = 0;
+                }
+                if (chance == 1)
+                {
+                    c = 1;
+                }
+                if (chance == 2)
+                {
+                    c = 2;
+                }
+                newWeapon++;
+            }
         }
-        if (chance == 1)
-        {
-            c = 1;
-        }
-        if (chance == 2)
-        {
-            c = 2;
-        }
+        chosen = 1;
     }
 
+    //the code for respective buttons
     public void Attack()
     {
-        EnemyChoice();
+        //EnemyChoice();
         PlayerAttacks();
+        turn++;
     }
-
     public void Defend()
     {
-        EnemyChoice();
+        //EnemyChoice();
         PlayerDefends();
+        turn++;
     }
-
     //for swapping weapons
     public void Return()
     {
         ActionPanel.SetActive(true);
         WeaponPanel.SetActive(false);
     }
-
+    //the weapon button code
     public void Sword()
     {
         if (thePlayer.Contains("sword") == true)
@@ -147,6 +199,7 @@ public class GameCode : MonoBehaviour
             logText.text = ("You switched weapon to a Sword. ");
             p = thePlayer.IndexOf("sword");
             Return();
+            PlayerSwitches();
         }
         else
         {
@@ -155,7 +208,6 @@ public class GameCode : MonoBehaviour
 
         
     }
-
     public void Hammer()
     {
         if (thePlayer.Contains("hammer") == true)
@@ -163,13 +215,13 @@ public class GameCode : MonoBehaviour
             logText.text = ("You switched weapon to a Hammer. ");
             p = thePlayer.IndexOf("hammer");
             Return();
+            PlayerSwitches();
         }
         else
         {
             logText.text = ("Your hammer is broken. You cannot use it");
         }
     }
-
     public void Spear()
     {
         if (thePlayer.Contains("spear") == true)
@@ -177,16 +229,17 @@ public class GameCode : MonoBehaviour
             logText.text = ("You switched weapon to a Spear. ");
             p = thePlayer.IndexOf("spear");
             Return();
+            PlayerSwitches();
         }
         else
         {
             logText.text = ("Your spear is broken. You cannot use it");
         }
     }
-
+    //for when a button is pressed
     public void PlayerAttacks()
     {
-        int enemyAction = Random.Range(0, 2);
+        //int enemyAction = Random.Range(0, 2);
         if (enemyAction == 0)
         {
             //both attack
@@ -211,7 +264,7 @@ public class GameCode : MonoBehaviour
                 logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You lost that round.");
             }
         }
-        else
+        if (enemyAction == 1)
         {
             //enemy defends
             //player attacks
@@ -243,11 +296,19 @@ public class GameCode : MonoBehaviour
                 thePlayer.RemoveAt(p);                
             }
         }
-        roundTimer = 10;
+        if (enemyAction == 2)
+        {
+            //the player wins
+            glory = glory + 2;
+            glorySlider.SetGlory(glory);
+            logText.text += ("You used a " + thePlayer[p] + ", while your opponent swapped weapons. You won that round.");
+        }
+        roundTimer = 8;
+        chosen = 0;
     }
     public void PlayerDefends()
     {
-        int enemyAction = Random.Range(0, 2);
+        //int enemyAction = Random.Range(0, 2);
         if (enemyAction == 0)
         {
             //player defends
@@ -279,11 +340,41 @@ public class GameCode : MonoBehaviour
                 thePlayer.RemoveAt(p);
             }
         }
-        else
+        if (enemyAction == 1)
         {
             //nothing happens
             logText.text = ("You both tried to defend. It was quite funny.");
         }
-        roundTimer = 10;
+        if (enemyAction == 2)
+        {
+            //nothing happens but opponent gets free switch
+            logText.text = ("You tried to defend. Your opponent got a free weapon switch.");
+        }
+        roundTimer = 8;
+        chosen = 0;
+    }
+    public void PlayerSwitches()
+    {
+        if (enemyAction == 0)
+        {
+            //player defends
+            logText.text = ("You Swapped weapons. ");
+            //player loses
+            glory = glory - 2;
+            glorySlider.SetGlory(glory);
+            logText.text += ("You swapped weapons, but your opponent attacked using " + theComputer[c] + ".");
+        }
+        if (enemyAction == 1)
+        {
+            //nothing happens
+            logText.text = ("You got a free weapon swap because your opponent defended.");
+        }
+        if (enemyAction == 2)
+        {
+            //nothing happens but opponent gets free switch
+            logText.text = ("You both swapped weapons and got a free weapon switch.");
+        }
+        roundTimer = 8;
+        chosen = 0;
     }
 }
