@@ -3412,7 +3412,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1356291717}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: c9e33de7264ee5a4baa28ab2d02f765b, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 7cc91cb5a235d9c4086523a41bd083e1, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -3429,6 +3429,38 @@ PlayableDirector:
   - key: {fileID: -2893576284015087570, guid: c9e33de7264ee5a4baa28ab2d02f765b, type: 2}
     value: {fileID: 2079238078}
   - key: {fileID: -8891516450219268334, guid: c9e33de7264ee5a4baa28ab2d02f765b, type: 2}
+    value: {fileID: 850533212}
+  - key: {fileID: -2893576284015087570, guid: 3bcd6f5f60a3fef4a986deb12c419035, type: 2}
+    value: {fileID: 2079238078}
+  - key: {fileID: -8891516450219268334, guid: 3bcd6f5f60a3fef4a986deb12c419035, type: 2}
+    value: {fileID: 850533212}
+  - key: {fileID: -2893576284015087570, guid: 76f3d9d3b8bd9e44fbe35f5f779d60e1, type: 2}
+    value: {fileID: 2079238078}
+  - key: {fileID: -8891516450219268334, guid: 76f3d9d3b8bd9e44fbe35f5f779d60e1, type: 2}
+    value: {fileID: 850533212}
+  - key: {fileID: -2893576284015087570, guid: 4a703abf5a91aa34d99d4b808fc5c9d2, type: 2}
+    value: {fileID: 2079238078}
+  - key: {fileID: -8891516450219268334, guid: 4a703abf5a91aa34d99d4b808fc5c9d2, type: 2}
+    value: {fileID: 850533212}
+  - key: {fileID: -2893576284015087570, guid: f5ad7c0d0a6164b4fae199955a398f73, type: 2}
+    value: {fileID: 2079238078}
+  - key: {fileID: -8891516450219268334, guid: f5ad7c0d0a6164b4fae199955a398f73, type: 2}
+    value: {fileID: 850533212}
+  - key: {fileID: -2893576284015087570, guid: bd89e987b2a7faa4591d602501033933, type: 2}
+    value: {fileID: 2079238078}
+  - key: {fileID: -8891516450219268334, guid: bd89e987b2a7faa4591d602501033933, type: 2}
+    value: {fileID: 850533212}
+  - key: {fileID: -2893576284015087570, guid: 2f6b2788088fd5243a154807057e816e, type: 2}
+    value: {fileID: 2079238078}
+  - key: {fileID: -8891516450219268334, guid: 2f6b2788088fd5243a154807057e816e, type: 2}
+    value: {fileID: 850533212}
+  - key: {fileID: -2893576284015087570, guid: a0717c5a6fcf17d4c8d47d2adbad208d, type: 2}
+    value: {fileID: 2079238078}
+  - key: {fileID: -8891516450219268334, guid: a0717c5a6fcf17d4c8d47d2adbad208d, type: 2}
+    value: {fileID: 850533212}
+  - key: {fileID: -2893576284015087570, guid: 7cc91cb5a235d9c4086523a41bd083e1, type: 2}
+    value: {fileID: 2079238078}
+  - key: {fileID: -8891516450219268334, guid: 7cc91cb5a235d9c4086523a41bd083e1, type: 2}
     value: {fileID: 850533212}
   m_ExposedReferences:
     m_References: []
