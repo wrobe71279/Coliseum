@@ -4127,6 +4127,8 @@ MonoBehaviour:
   DefeatPanel: {fileID: 763588855}
   ActionPanel: {fileID: 1212001322}
   WeaponPanel: {fileID: 1015272437}
+  LogPanel: {fileID: 1802625879}
+  TimerPanel: {fileID: 2087084594}
   attack: 0
   defend: 0
   newWeapon: 0
@@ -4140,6 +4142,7 @@ MonoBehaviour:
   cutscene8: {fileID: 598409370}
   cutscene9: {fileID: 386817936}
   cutscene10: {fileID: 914511028}
+  readyNow: 0
 --- !u!4 &1458194101
 Transform:
   m_ObjectHideFlags: 0

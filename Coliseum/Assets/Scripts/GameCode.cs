@@ -44,6 +44,8 @@ public class GameCode : MonoBehaviour
     //move between inventories
     public GameObject ActionPanel;
     public GameObject WeaponPanel;
+    public GameObject LogPanel;
+    public GameObject TimerPanel;
 
     //getting the AI to go first
     int enemyAction;
@@ -68,6 +70,9 @@ public class GameCode : MonoBehaviour
 
     //for fuzzy logic
     int turn;
+
+    //stop the player from spam clicking
+    public int readyNow;
 
     // Start is called before the first frame update
     void Start()
@@ -268,6 +273,11 @@ public class GameCode : MonoBehaviour
                 //same weapon
                 logText.text += ("Both attacked with " + thePlayer[p] + "s, resulting in a tie.");
                 cutscene1.Play();
+                StartCoroutine(Cutscene());
+                /*
+                CutscenePlays();
+                PostCutscene();
+                */
             }
             if ((thePlayer[p] == "sword" && theComputer[c] == "spear") || (thePlayer[p] == "spear" && theComputer[c] == "hammer") || (thePlayer[p] == "hammer" && theComputer[c] == "sword"))
             {
@@ -276,6 +286,11 @@ public class GameCode : MonoBehaviour
                 glorySlider.SetGlory(glory);
                 logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You won that round.");
                 cutscene2.Play();
+                StartCoroutine(Cutscene());
+                /*
+                CutscenePlays();
+                PostCutscene();
+                */
             }
             if ((theComputer[c] == "sword" && thePlayer[p] == "spear") || (theComputer[c] == "spear" && thePlayer[p] == "hammer") || (theComputer[c] == "hammer" && thePlayer[p] == "sword"))
             {
@@ -284,6 +299,11 @@ public class GameCode : MonoBehaviour
                 glorySlider.SetGlory(glory);
                 logText.text += ("You used a " + thePlayer[p] + ", while your opponent used a " + theComputer[c] + ". You lost that round.");
                 cutscene3.Play();
+                StartCoroutine(Cutscene());
+                /*
+                CutscenePlays();
+                PostCutscene();
+                */
             }
         }
         if (enemyAction == 1)
@@ -299,6 +319,7 @@ public class GameCode : MonoBehaviour
                 glorySlider.SetGlory(glory);
                 logText.text += ("Both sides used " + thePlayer[p] + "s, but the opponent deflected your attack. You Lost");
                 cutscene4.Play();
+                //StartCoroutine(CutscenePlays());
             }
             if ((thePlayer[p] == "sword" && theComputer[c] == "spear") || (thePlayer[p] == "spear" && theComputer[c] == "hammer") || (thePlayer[p] == "hammer" && theComputer[c] == "sword"))
             {
@@ -308,6 +329,7 @@ public class GameCode : MonoBehaviour
                 //breaks opponent weapon
                 logText.text += ("You used a " + thePlayer[p] + ", breaking your opponent's " + theComputer[c] + ". You won that round");
                 cutscene5.Play();
+                //StartCoroutine(CutscenePlays());
                 theComputer.RemoveAt(c);                
             }
             if ((theComputer[c] == "sword" && thePlayer[p] == "spear") || (theComputer[c] == "spear" && thePlayer[p] == "hammer") || (theComputer[c] == "hammer" && thePlayer[p] == "sword"))
@@ -318,6 +340,7 @@ public class GameCode : MonoBehaviour
                 //breaks own weapon
                 logText.text += ("You used a " + thePlayer[p] + ", against your opponent's " + theComputer[c] + ". You broke your " + thePlayer[p] + " and lost.");
                 cutscene6.Play();
+                //StartCoroutine(CutscenePlays());
                 thePlayer.RemoveAt(p);
                 WeaponBreak();
             }
@@ -329,6 +352,7 @@ public class GameCode : MonoBehaviour
             glorySlider.SetGlory(glory);
             logText.text += ("You used a " + thePlayer[p] + ", while your opponent swapped weapons. You won that round.");
             cutscene5.Play();
+            //StartCoroutine(CutscenePlays());
         }
         roundTimer = 8;
         chosen = 0;
@@ -347,6 +371,7 @@ public class GameCode : MonoBehaviour
                 glorySlider.SetGlory(glory);
                 logText.text += ("Both sides used " + thePlayer[p] + "s, but deflected your opponent's attack. You Won");
                 cutscene7.Play();
+                //StartCoroutine(CutscenePlays());
             }
 
             if ((thePlayer[p] == "sword" && theComputer[c] == "spear") || (thePlayer[p] == "spear" && theComputer[c] == "hammer") || (thePlayer[p] == "hammer" && theComputer[c] == "sword"))
@@ -357,6 +382,7 @@ public class GameCode : MonoBehaviour
                 //breaks opponent weapon
                 logText.text += ("You used a " + thePlayer[p] + ", and broke your opponent's " + theComputer[c] + ". You won that round");
                 cutscene8.Play();
+                //StartCoroutine(CutscenePlays());
                 theComputer.RemoveAt(c);                
             }
 
@@ -367,6 +393,7 @@ public class GameCode : MonoBehaviour
                 glorySlider.SetGlory(glory);
                 logText.text += ("You used a " + thePlayer[p] + ", but your opponent's " + theComputer[c] + " defends and breaks your " + thePlayer[p] + ".");
                 cutscene9.Play();
+                //StartCoroutine(CutscenePlays());
                 thePlayer.RemoveAt(p);
                 WeaponBreak();
             }
@@ -376,12 +403,14 @@ public class GameCode : MonoBehaviour
             //nothing happens
             logText.text = ("You both tried to defend. It was quite funny.");
             cutscene10.Play();
+            //StartCoroutine(CutscenePlays());
         }
         if (enemyAction == 2)
         {
             //nothing happens but opponent gets free switch
             logText.text = ("You tried to defend. Your opponent got a free weapon switch.");
             cutscene10.Play();
+            //StartCoroutine(CutscenePlays());
         }
         roundTimer = 8;
         chosen = 0;
@@ -397,23 +426,27 @@ public class GameCode : MonoBehaviour
             glorySlider.SetGlory(glory);
             logText.text += ("You swapped weapons, but your opponent attacked using " + theComputer[c] + ".");
             cutscene9.Play();
+            //StartCoroutine(CutscenePlays());
         }
         if (enemyAction == 1)
         {
             //nothing happens
             logText.text = ("You got a free weapon swap because your opponent defended.");
             cutscene10.Play();
+            //StartCoroutine(CutscenePlays());
         }
         if (enemyAction == 2)
         {
             //nothing happens but opponent gets free switch
             logText.text = ("You both swapped weapons and got a free weapon switch.");
             cutscene10.Play();
+            //StartCoroutine(CutscenePlays());
         }
         roundTimer = 8;
         chosen = 0;
     }
-
+    
+    //what happens when the user has a weapon broken
     void WeaponBreak()
     {
         logText.text += ("Choose another weapon.");
@@ -422,4 +455,29 @@ public class GameCode : MonoBehaviour
         WeaponPanel.SetActive(true);
     }
 
+    //methods for the cutscenes to look like cutscenes
+    void CutscenePlays()
+    {
+        ActionPanel.SetActive(false);
+        WeaponPanel.SetActive(false);
+        LogPanel.SetActive(false);
+        TimerPanel.SetActive(false);
+    }
+
+    void PostCutscene()
+    {
+        ActionPanel.SetActive(true);
+        WeaponPanel.SetActive(false);
+        LogPanel.SetActive(true);
+        TimerPanel.SetActive(true);
+    }
+
+    IEnumerator Cutscene()
+    {
+        CutscenePlays();
+
+        yield return new WaitForSecondsRealtime(2);
+
+        PostCutscene();
+    }
 }
