@@ -46,6 +46,12 @@ public class GameCode : MonoBehaviour
     public GameObject WeaponPanel;
     public GameObject LogPanel;
     public GameObject TimerPanel;
+    public GameObject PredictionPanel;
+
+    //ui for enemy telegraphy
+    public GameObject PredictAttack;
+    public GameObject PredictDefend;
+    public GameObject PredictSwitch;
 
     //ui for displaying equipped weapons
     public GameObject EquipSwordPanel;
@@ -182,12 +188,18 @@ public class GameCode : MonoBehaviour
             if (enemyAction == 0 || enemyAction == 3)
             {
                 logText.text = ("The enemy seems to be moving towards you. ");
+                PredictAttack.SetActive(true);
+                PredictDefend.SetActive(false);
+                PredictSwitch.SetActive(false);
                 enemyAction = 0;
                 attack++;
             }
             if (enemyAction == 1 || enemyAction == 4)
             {
                 logText.text = ("The enemy is moving away from you. ");
+                PredictAttack.SetActive(false);
+                PredictDefend.SetActive(true);
+                PredictSwitch.SetActive(false);
                 enemyAction = 1;
                 defend++;
             }
@@ -195,6 +207,9 @@ public class GameCode : MonoBehaviour
             if (enemyAction == 2)
             {
                 logText.text = ("It seems that your enemy is changing weapons. ");
+                PredictAttack.SetActive(false);
+                PredictDefend.SetActive(false);
+                PredictSwitch.SetActive(true);
                 if (chance == 0)
                 {
                     c = 0;
@@ -606,16 +621,18 @@ public class GameCode : MonoBehaviour
     {
         ActionPanel.SetActive(false);
         WeaponPanel.SetActive(false);
-        LogPanel.SetActive(false);
+        //LogPanel.SetActive(false);
         TimerPanel.SetActive(false);
+        PredictionPanel.SetActive(false);
     }
 
     void PostCutscene()
     {
         ActionPanel.SetActive(true);
         WeaponPanel.SetActive(false);
-        LogPanel.SetActive(true);
+        //LogPanel.SetActive(true);
         TimerPanel.SetActive(true);
+        PredictionPanel.SetActive(true);
     }
 
     IEnumerator Cutscene()
