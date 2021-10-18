@@ -47,6 +47,14 @@ public class GameCode : MonoBehaviour
     public GameObject LogPanel;
     public GameObject TimerPanel;
 
+    //ui for displaying equipped weapons
+    public GameObject EquipSwordPanel;
+    public GameObject EquipHammerPanel;
+    public GameObject EquipSpearPanel;
+    public GameObject EnemyEquipSwordPanel;
+    public GameObject EnemyEquipHammerPanel;
+    public GameObject EnemyEquipSpearPanel;
+
     //getting the AI to go first
     int enemyAction;
     int chance;
@@ -198,12 +206,16 @@ public class GameCode : MonoBehaviour
     {
         //EnemyChoice();
         PlayerAttacks();
+        DisplayEnemyWeapon();
+        DisplayWeapon();
         turn++;
     }
     public void Defend()
     {
         //EnemyChoice();
         PlayerDefends();
+        DisplayEnemyWeapon();
+        DisplayWeapon();
         turn++;
     }
     //for swapping weapons
@@ -222,6 +234,8 @@ public class GameCode : MonoBehaviour
             p = thePlayer.IndexOf("sword");
             Return();
             PlayerSwitches();
+            DisplayEnemyWeapon();
+            DisplayWeapon();
         }
         else
         {
@@ -239,6 +253,8 @@ public class GameCode : MonoBehaviour
             p = thePlayer.IndexOf("hammer");
             Return();
             PlayerSwitches();
+            DisplayEnemyWeapon();
+            DisplayWeapon();
         }
         else
         {
@@ -254,6 +270,8 @@ public class GameCode : MonoBehaviour
             p = thePlayer.IndexOf("spear");
             Return();
             PlayerSwitches();
+            DisplayEnemyWeapon();
+            DisplayWeapon();
         }
         else
         {
@@ -501,6 +519,55 @@ public class GameCode : MonoBehaviour
         weaponSwitch.HideWeapon();
         ActionPanel.SetActive(false);
         WeaponPanel.SetActive(true);
+    }
+
+    //to display weapon of enemy
+    void DisplayEnemyWeapon()
+    {
+        if(c == theComputer.IndexOf("sword"))
+        {
+            weaponSwitch.EnemySword();
+            EnemyEquipSwordPanel.SetActive(true);
+            EnemyEquipHammerPanel.SetActive(false);
+            EnemyEquipSpearPanel.SetActive(false);
+        }
+        else if(c == theComputer.IndexOf("hammer"))
+        {
+            weaponSwitch.EnemyHammer();
+            EnemyEquipSwordPanel.SetActive(false);
+            EnemyEquipHammerPanel.SetActive(true);
+            EnemyEquipSpearPanel.SetActive(false);
+        }
+        else if(c == theComputer.IndexOf("spear"))
+        {
+            weaponSwitch.EnemySpear();
+            EnemyEquipSwordPanel.SetActive(false);
+            EnemyEquipHammerPanel.SetActive(false);
+            EnemyEquipSpearPanel.SetActive(true);
+        }
+    }
+
+    //display weapon of player
+    void DisplayWeapon()
+    {
+        if (p == thePlayer.IndexOf("sword"))
+        {
+            EquipSwordPanel.SetActive(true);
+            EquipHammerPanel.SetActive(false);
+            EquipSpearPanel.SetActive(false);
+        }
+        else if (p == thePlayer.IndexOf("hammer"))
+        {
+            EquipSwordPanel.SetActive(false);
+            EquipHammerPanel.SetActive(true);
+            EquipSpearPanel.SetActive(false);
+        }
+        else if (p == thePlayer.IndexOf("spear"))
+        {
+            EquipSwordPanel.SetActive(false);
+            EquipHammerPanel.SetActive(false);
+            EquipSpearPanel.SetActive(true);
+        }
     }
 
     //methods for the cutscenes to look like cutscenes
