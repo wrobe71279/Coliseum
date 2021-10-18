@@ -105,7 +105,7 @@ public class Tutorial : MonoBehaviour
 
             logText.text = ("You defended from the opponent's attack. ");
             logText.text += ("You used a sword, while your opponent used a spear. You lost that round.");
-            inital.text = "When defending, you less glory but can break your opponent's weapon";
+            inital.text = "When defending, you gain less glory but can break your opponent's weapon";
 
             first.SetActive(false);
             second.SetActive(false);
@@ -155,9 +155,11 @@ public class Tutorial : MonoBehaviour
 
     public void Spear()
     {
-        logText.text = ("You switched weapon to a Spear. ");
-        inital.text = "Now try to attack";
+        logText.text = ("You switched weapon to a Spear. But your opponent attacked you");
+        inital.text = "Be careful when you swap weapons because your opponent can still attack you. Now let's get revenge, press the attack button.";
         TutorialPanel.SetActive(true);
+        WeaponPanel.SetActive(false);
+        ActionPanel.SetActive(true);
     }
 
     public void Menu()
