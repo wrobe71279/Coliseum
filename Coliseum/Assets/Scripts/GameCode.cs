@@ -55,6 +55,17 @@ public class GameCode : MonoBehaviour
     public GameObject EnemyEquipHammerPanel;
     public GameObject EnemyEquipSpearPanel;
 
+    //weapon buttons
+    public Button swordButton;
+    public Button hammerButton;
+    public Button spearButton;
+    public Sprite brokenSword;
+    public Sprite brokenHammer;
+    public Sprite brokenSpear;
+    public Image swordImageComponent;
+    public Image hammerImageComponent;
+    public Image spearImageComponent;
+
     //getting the AI to go first
     int enemyAction;
     int chance;
@@ -130,6 +141,7 @@ public class GameCode : MonoBehaviour
                         Time.timeScale = 0;
                     }
                 }
+
             }
             else
             {
@@ -239,7 +251,7 @@ public class GameCode : MonoBehaviour
         }
         else
         {
-            logText.text = ("Your sword is broken. You cannot use it");
+            logText.text = ("Your sword is broken. You cannot use it");            
         }
 
         
@@ -517,8 +529,27 @@ public class GameCode : MonoBehaviour
     {
         logText.text += ("Choose another weapon.");
         weaponSwitch.HideWeapon();
-        ActionPanel.SetActive(false);
-        WeaponPanel.SetActive(true);
+        //ActionPanel.SetActive(false);
+        //WeaponPanel.SetActive(true);
+
+        if (thePlayer.Contains("sword") == false)
+        {
+            swordButton.interactable = false;
+            swordImageComponent.sprite = brokenSword;
+        }
+
+        if (thePlayer.Contains("hammer") == false)
+        {
+            hammerButton.interactable = false;
+            hammerImageComponent.sprite = brokenHammer;
+        }
+
+        if (thePlayer.Contains("spear") == false)
+        {
+            spearButton.interactable = false;
+            spearImageComponent.sprite = brokenSpear;
+        }
+
     }
 
     //to display weapon of enemy
