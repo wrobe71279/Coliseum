@@ -2459,7 +2459,6 @@ MonoBehaviour:
   NextButton: {fileID: 1386293748}
   dialogue:
     sentences:
-    - When defending, you less glory but can break your opponent's weapon
     - Now let's swap weapons. Press the Switch Button and then choose the spear.
 --- !u!114 &883268875
 MonoBehaviour:
@@ -3391,8 +3390,8 @@ MonoBehaviour:
     - Don't forget in order to win you must reach the max glory or break all your
       opponents weapons.
     - Don't let your opponent do this first otherwise you lose.
-    - Be careful in the coliseum you have limited time to make choices.
-    - Now you can progress to the game!
+    - Be careful in the coliseum you have limited time to make your choices. You
+      are ready now.
 --- !u!114 &1303967661
 MonoBehaviour:
   m_ObjectHideFlags: 0
