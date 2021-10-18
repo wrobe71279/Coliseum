@@ -47,6 +47,14 @@ public class GameCode : MonoBehaviour
     public GameObject LogPanel;
     public GameObject TimerPanel;
 
+    //ui for displaying equipped weapons
+    public GameObject EquipSwordPanel;
+    public GameObject EquipHammerPanel;
+    public GameObject EquipSpearPanel;
+    public GameObject EnemyEquipSwordPanel;
+    public GameObject EnemyEquipHammerPanel;
+    public GameObject EnemyEquipSpearPanel;
+
     //getting the AI to go first
     int enemyAction;
     int chance;
@@ -199,6 +207,7 @@ public class GameCode : MonoBehaviour
         //EnemyChoice();
         PlayerAttacks();
         DisplayEnemyWeapon();
+        DisplayWeapon();
         turn++;
     }
     public void Defend()
@@ -206,6 +215,7 @@ public class GameCode : MonoBehaviour
         //EnemyChoice();
         PlayerDefends();
         DisplayEnemyWeapon();
+        DisplayWeapon();
         turn++;
     }
     //for swapping weapons
@@ -225,6 +235,7 @@ public class GameCode : MonoBehaviour
             Return();
             PlayerSwitches();
             DisplayEnemyWeapon();
+            DisplayWeapon();
         }
         else
         {
@@ -243,6 +254,7 @@ public class GameCode : MonoBehaviour
             Return();
             PlayerSwitches();
             DisplayEnemyWeapon();
+            DisplayWeapon();
         }
         else
         {
@@ -259,6 +271,7 @@ public class GameCode : MonoBehaviour
             Return();
             PlayerSwitches();
             DisplayEnemyWeapon();
+            DisplayWeapon();
         }
         else
         {
@@ -508,22 +521,52 @@ public class GameCode : MonoBehaviour
         WeaponPanel.SetActive(true);
     }
 
+    //to display weapon of enemy
     void DisplayEnemyWeapon()
     {
         if(c == theComputer.IndexOf("sword"))
         {
             weaponSwitch.EnemySword();
-            //Debug.Log("Enemy switched to " + theComputer[c]);
+            EnemyEquipSwordPanel.SetActive(true);
+            EnemyEquipHammerPanel.SetActive(false);
+            EnemyEquipSpearPanel.SetActive(false);
         }
         else if(c == theComputer.IndexOf("hammer"))
         {
             weaponSwitch.EnemyHammer();
-            //Debug.Log("Enemy switched to " + theComputer[c]);
+            EnemyEquipSwordPanel.SetActive(false);
+            EnemyEquipHammerPanel.SetActive(true);
+            EnemyEquipSpearPanel.SetActive(false);
         }
         else if(c == theComputer.IndexOf("spear"))
         {
             weaponSwitch.EnemySpear();
-            //Debug.Log("Enemy switched to " + theComputer[c]);
+            EnemyEquipSwordPanel.SetActive(false);
+            EnemyEquipHammerPanel.SetActive(false);
+            EnemyEquipSpearPanel.SetActive(true);
+        }
+    }
+
+    //display weapon of player
+    void DisplayWeapon()
+    {
+        if (p == thePlayer.IndexOf("sword"))
+        {
+            EquipSwordPanel.SetActive(true);
+            EquipHammerPanel.SetActive(false);
+            EquipSpearPanel.SetActive(false);
+        }
+        else if (p == thePlayer.IndexOf("hammer"))
+        {
+            EquipSwordPanel.SetActive(false);
+            EquipHammerPanel.SetActive(true);
+            EquipSpearPanel.SetActive(false);
+        }
+        else if (p == thePlayer.IndexOf("spear"))
+        {
+            EquipSwordPanel.SetActive(false);
+            EquipHammerPanel.SetActive(false);
+            EquipSpearPanel.SetActive(true);
         }
     }
 
