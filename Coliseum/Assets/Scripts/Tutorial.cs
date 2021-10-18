@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class Tutorial : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Tutorial : MonoBehaviour
     public GameObject ActionPanel;
     public GameObject WeaponPanel;
     public GameObject TutorialPanel;
+    public GameObject TimerPanel;
+    public GameObject LogPanel;
 
     //top get the first text the player sees
     public Text inital;
@@ -30,6 +33,15 @@ public class Tutorial : MonoBehaviour
     public GameObject menu;
     public GameObject fullgame;
 
+    //playable animation sequences
+    public PlayableDirector cutscene1;
+    public PlayableDirector cutscene2;
+    public PlayableDirector cutscene3;
+
+    //weapon and weapon ui of enemy
+    public GameObject enemySpear;
+    public GameObject enemySpearIcon;
+    public GameObject enemyHammer;
 
     public void Attack()
     {
@@ -50,11 +62,14 @@ public class Tutorial : MonoBehaviour
 
                 y = 2;
 
+                cutscene1.Play();
+                StartCoroutine(Cutscene());
                 inital.text = "Good job on winning that round. You had the better weapon.";
 
-                first.SetActive(false);
-                second.SetActive(true);
-                TutorialPanel.SetActive(true);
+                //moved this script to coroutine
+                //first.SetActive(false);
+                //second.SetActive(true);
+                //TutorialPanel.SetActive(true);
             }
             else
             {
@@ -69,11 +84,14 @@ public class Tutorial : MonoBehaviour
                 logText.text = ("Both sides chose to attack. ");
                 logText.text += ("You used a spear, while your opponent used a hammer. You won that round.");
 
+                cutscene1.Play();
+                StartCoroutine(Cutscene());
                 inital.text = "Good job on winning that round. You have now completed the tutorial.";
-
-                third.SetActive(false);
-                fourth.SetActive(true);
-                TutorialPanel.SetActive(true);
+                
+                //moved to coroutine
+                //third.SetActive(false);
+                //fourth.SetActive(true);
+                //TutorialPanel.SetActive(true);
 
                 //buttons to go to menu or game
                 fourth.SetActive(false);
@@ -105,12 +123,17 @@ public class Tutorial : MonoBehaviour
 
             logText.text = ("You defended from the opponent's attack. ");
             logText.text += ("You used a sword, while your opponent used a spear. You lost that round.");
+
+            cutscene2.Play();
+            StartCoroutine(Cutscene());
+
             inital.text = "When defending, you gain less glory but can break your opponent's weapon";
 
-            first.SetActive(false);
-            second.SetActive(false);
-            third.SetActive(true);
-            TutorialPanel.SetActive(true);
+            //moved this script to coroutine
+            //first.SetActive(false);
+            //second.SetActive(false);
+            //third.SetActive(true);
+            //TutorialPanel.SetActive(true);
         }
         else
         {
@@ -155,11 +178,71 @@ public class Tutorial : MonoBehaviour
 
     public void Spear()
     {
+        cutscene3.Play();
+        StartCoroutine(Cutscene());
         logText.text = ("You switched weapon to a Spear. But your opponent attacked you");
         inital.text = "Be careful when you swap weapons because your opponent can still attack you. Now let's get revenge, press the attack button.";
-        TutorialPanel.SetActive(true);
+        
+        //moved to coroutine
+        //TutorialPanel.SetActive(true);
+        //WeaponPanel.SetActive(false);
+        //ActionPanel.SetActive(true);
+    }
+
+    //methods for the cutscenes to look like cutscenes
+    void CutscenePlays()
+    {
+        ActionPanel.SetActive(false);
         WeaponPanel.SetActive(false);
+        LogPanel.SetActive(false);
+        TimerPanel.SetActive(false);
+
+    }
+
+    void PostCutscene()
+    {
         ActionPanel.SetActive(true);
+        WeaponPanel.SetActive(false);
+        LogPanel.SetActive(true);
+        TimerPanel.SetActive(true);
+
+        if(y==2)
+        {
+            first.SetActive(false);
+            second.SetActive(true);
+            TutorialPanel.SetActive(true);
+        }
+        else if(y==3)
+        {
+            first.SetActive(false);
+            second.SetActive(false);
+            third.SetActive(true);
+            TutorialPanel.SetActive(true);
+            enemyHammer.SetActive(true);
+            enemySpear.SetActive(false);
+            enemySpearIcon.SetActive(false);
+        }
+        else if(y==4)
+        {
+            third.SetActive(false);
+            fourth.SetActive(false);
+            TutorialPanel.SetActive(true);
+        }
+        else
+        {
+            TutorialPanel.SetActive(true);
+            WeaponPanel.SetActive(false);
+            ActionPanel.SetActive(true);
+        }
+    }
+
+    IEnumerator Cutscene()
+    {
+        CutscenePlays();
+
+        yield return new WaitForSecondsRealtime(2);
+
+        PostCutscene();
     }
 
     public void Menu()
