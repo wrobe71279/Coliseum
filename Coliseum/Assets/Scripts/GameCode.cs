@@ -198,12 +198,14 @@ public class GameCode : MonoBehaviour
     {
         //EnemyChoice();
         PlayerAttacks();
+        DisplayEnemyWeapon();
         turn++;
     }
     public void Defend()
     {
         //EnemyChoice();
         PlayerDefends();
+        DisplayEnemyWeapon();
         turn++;
     }
     //for swapping weapons
@@ -222,6 +224,7 @@ public class GameCode : MonoBehaviour
             p = thePlayer.IndexOf("sword");
             Return();
             PlayerSwitches();
+            DisplayEnemyWeapon();
         }
         else
         {
@@ -239,6 +242,7 @@ public class GameCode : MonoBehaviour
             p = thePlayer.IndexOf("hammer");
             Return();
             PlayerSwitches();
+            DisplayEnemyWeapon();
         }
         else
         {
@@ -254,6 +258,7 @@ public class GameCode : MonoBehaviour
             p = thePlayer.IndexOf("spear");
             Return();
             PlayerSwitches();
+            DisplayEnemyWeapon();
         }
         else
         {
@@ -501,6 +506,22 @@ public class GameCode : MonoBehaviour
         weaponSwitch.HideWeapon();
         ActionPanel.SetActive(false);
         WeaponPanel.SetActive(true);
+    }
+
+    void DisplayEnemyWeapon()
+    {
+        if(theComputer[c] == "Sword")
+        {
+            weaponSwitch.EnemySword();
+        }
+        else if(theComputer[c] == "Hammer")
+        {
+            weaponSwitch.EnemyHammer();
+        }
+        else if(theComputer[c] == "Spear")
+        {
+            weaponSwitch.EnemySpear();
+        }
     }
 
     //methods for the cutscenes to look like cutscenes
