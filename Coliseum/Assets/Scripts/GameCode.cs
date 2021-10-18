@@ -510,17 +510,20 @@ public class GameCode : MonoBehaviour
 
     void DisplayEnemyWeapon()
     {
-        if(theComputer[c] == "Sword")
+        if(c == theComputer.IndexOf("sword"))
         {
             weaponSwitch.EnemySword();
+            //Debug.Log("Enemy switched to " + theComputer[c]);
         }
-        else if(theComputer[c] == "Hammer")
+        else if(c == theComputer.IndexOf("hammer"))
         {
             weaponSwitch.EnemyHammer();
+            //Debug.Log("Enemy switched to " + theComputer[c]);
         }
-        else if(theComputer[c] == "Spear")
+        else if(c == theComputer.IndexOf("spear"))
         {
             weaponSwitch.EnemySpear();
+            //Debug.Log("Enemy switched to " + theComputer[c]);
         }
     }
 
