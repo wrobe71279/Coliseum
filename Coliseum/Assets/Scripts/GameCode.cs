@@ -46,6 +46,12 @@ public class GameCode : MonoBehaviour
     public GameObject WeaponPanel;
     public GameObject LogPanel;
     public GameObject TimerPanel;
+    public GameObject PredictionPanel;
+
+    //ui for enemy telegraphy
+    public GameObject PredictAttack;
+    public GameObject PredictDefend;
+    public GameObject PredictSwitch;
 
     //ui for displaying equipped weapons
     public GameObject EquipSwordPanel;
@@ -54,6 +60,17 @@ public class GameCode : MonoBehaviour
     public GameObject EnemyEquipSwordPanel;
     public GameObject EnemyEquipHammerPanel;
     public GameObject EnemyEquipSpearPanel;
+
+    //weapon buttons
+    public Button swordButton;
+    public Button hammerButton;
+    public Button spearButton;
+    public Sprite brokenSword;
+    public Sprite brokenHammer;
+    public Sprite brokenSpear;
+    public Image swordImageComponent;
+    public Image hammerImageComponent;
+    public Image spearImageComponent;
 
     //getting the AI to go first
     int enemyAction;
@@ -130,6 +147,7 @@ public class GameCode : MonoBehaviour
                         Time.timeScale = 0;
                     }
                 }
+
             }
             else
             {
@@ -170,12 +188,18 @@ public class GameCode : MonoBehaviour
             if (enemyAction == 0 || enemyAction == 3)
             {
                 logText.text = ("The enemy seems to be moving towards you. ");
+                PredictAttack.SetActive(true);
+                PredictDefend.SetActive(false);
+                PredictSwitch.SetActive(false);
                 enemyAction = 0;
                 attack++;
             }
             if (enemyAction == 1 || enemyAction == 4)
             {
                 logText.text = ("The enemy is moving away from you. ");
+                PredictAttack.SetActive(false);
+                PredictDefend.SetActive(true);
+                PredictSwitch.SetActive(false);
                 enemyAction = 1;
                 defend++;
             }
@@ -183,6 +207,9 @@ public class GameCode : MonoBehaviour
             if (enemyAction == 2)
             {
                 logText.text = ("It seems that your enemy is changing weapons. ");
+                PredictAttack.SetActive(false);
+                PredictDefend.SetActive(false);
+                PredictSwitch.SetActive(true);
                 if (chance == 0)
                 {
                     c = 0;
@@ -239,7 +266,7 @@ public class GameCode : MonoBehaviour
         }
         else
         {
-            logText.text = ("Your sword is broken. You cannot use it");
+            logText.text = ("Your sword is broken. You cannot use it");            
         }
 
         
@@ -517,8 +544,27 @@ public class GameCode : MonoBehaviour
     {
         logText.text += ("Choose another weapon.");
         weaponSwitch.HideWeapon();
-        ActionPanel.SetActive(false);
-        WeaponPanel.SetActive(true);
+        //ActionPanel.SetActive(false);
+        //WeaponPanel.SetActive(true);
+
+        if (thePlayer.Contains("sword") == false)
+        {
+            swordButton.interactable = false;
+            swordImageComponent.sprite = brokenSword;
+        }
+
+        if (thePlayer.Contains("hammer") == false)
+        {
+            hammerButton.interactable = false;
+            hammerImageComponent.sprite = brokenHammer;
+        }
+
+        if (thePlayer.Contains("spear") == false)
+        {
+            spearButton.interactable = false;
+            spearImageComponent.sprite = brokenSpear;
+        }
+
     }
 
     //to display weapon of enemy
@@ -575,16 +621,18 @@ public class GameCode : MonoBehaviour
     {
         ActionPanel.SetActive(false);
         WeaponPanel.SetActive(false);
-        LogPanel.SetActive(false);
+        //LogPanel.SetActive(false);
         TimerPanel.SetActive(false);
+        PredictionPanel.SetActive(false);
     }
 
     void PostCutscene()
     {
         ActionPanel.SetActive(true);
         WeaponPanel.SetActive(false);
-        LogPanel.SetActive(true);
+        //LogPanel.SetActive(true);
         TimerPanel.SetActive(true);
+        PredictionPanel.SetActive(true);
     }
 
     IEnumerator Cutscene()
