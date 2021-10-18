@@ -7213,6 +7213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2097448584}
   - component: {fileID: 2097448583}
+  - component: {fileID: 2097448585}
   m_Layer: 0
   m_Name: TutorialRules
   m_TagString: Untagged
@@ -7236,6 +7237,7 @@ MonoBehaviour:
   WeaponPanel: {fileID: 1797261315}
   TutorialPanel: {fileID: 1376628861}
   TimerPanel: {fileID: 1698528662}
+  glorySlider: {fileID: 2097448585}
   inital: {fileID: 399001546}
   first: {fileID: 510863547}
   second: {fileID: 1427410088}
@@ -7267,6 +7269,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2097448585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097448582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ebc264ada24564a930078bb04809fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 490446521}
 --- !u!1001 &2128162759
 PrefabInstance:
   m_ObjectHideFlags: 0

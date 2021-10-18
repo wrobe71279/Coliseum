@@ -16,6 +16,10 @@ public class Tutorial : MonoBehaviour
     public GameObject TimerPanel;
     //public GameObject logPanel;
 
+    //glory ui
+    public GlorySlider glorySlider;
+    int glory = 0;
+
     //top get the first text the player sees
     public Text inital;
 
@@ -67,6 +71,9 @@ public class Tutorial : MonoBehaviour
 
                 y = 2;
 
+                glory = glory + 2;
+                glorySlider.SetGlory(glory);
+
                 cutscene1.Play();
                 StartCoroutine(Cutscene());
                 inital.text = "Good job on winning that round. You had the better weapon.";
@@ -88,6 +95,9 @@ public class Tutorial : MonoBehaviour
                  */
                 ////logText.text = ("Both sides chose to attack. ");
                 //logText.text += ("You used a spear, while your opponent used a hammer. You won that round.");
+
+                glory = glory + 2;
+                glorySlider.SetGlory(glory);
 
                 cutscene1.Play();
                 StartCoroutine(Cutscene());
@@ -128,6 +138,8 @@ public class Tutorial : MonoBehaviour
 
             //logText.text = ("You defended from the opponent's attack. ");
             //logText.text += ("You used a sword, while your opponent used a spear. You lost that round.");
+            glory = glory + 1;
+            glorySlider.SetGlory(glory);
 
             cutscene2.Play();
             StartCoroutine(Cutscene());
@@ -186,6 +198,9 @@ public class Tutorial : MonoBehaviour
         playerSword.SetActive(false);
         playerSpear.SetActive(true);
         playerSwordIcon.SetActive(false);
+
+        glory = glory - 2;
+        glorySlider.SetGlory(glory);
 
         cutscene3.Play();
         StartCoroutine(Cutscene());
