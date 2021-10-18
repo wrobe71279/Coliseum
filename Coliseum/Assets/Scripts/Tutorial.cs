@@ -174,7 +174,7 @@ public class Tutorial : MonoBehaviour
             ActionPanel.SetActive(false);
             WeaponPanel.SetActive(true);
 
-            inital.text = "The weapons from left to right are; Spear, Hammer, Sword";
+            inital.text = "The weapons flowing clockwise are: Hammer, Sword, Spear";
 
             first.SetActive(false);
             second.SetActive(false);
