@@ -43,6 +43,11 @@ public class Tutorial : MonoBehaviour
     public GameObject enemySpearIcon;
     public GameObject enemyHammer;
 
+    //weapon and weapon ui of player
+    public GameObject playerSword;
+    public GameObject playerSwordIcon;
+    public GameObject playerSpear;
+
     public void Attack()
     {
         //needs y to be 1
@@ -178,6 +183,10 @@ public class Tutorial : MonoBehaviour
 
     public void Spear()
     {
+        playerSword.SetActive(false);
+        playerSpear.SetActive(true);
+        playerSwordIcon.SetActive(false);
+
         cutscene3.Play();
         StartCoroutine(Cutscene());
         logText.text = ("You switched weapon to a Spear. But your opponent attacked you");

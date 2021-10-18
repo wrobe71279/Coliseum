@@ -1324,7 +1324,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1426861599}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3535,6 +3535,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -1, y: -177.23, z: 0}
+--- !u!1 &972708885 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 356090609352193323, guid: 4118cc0592bc25d46a0b61905b9f2a5b, type: 3}
+  m_PrefabInstance: {fileID: 508113125}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1030645580
 GameObject:
   m_ObjectHideFlags: 0
@@ -5400,8 +5405,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 456621511}
   - {fileID: 1692254891}
+  - {fileID: 456621511}
   - {fileID: 535383004}
   - {fileID: 575401493}
   m_Father: {fileID: 763229912}
@@ -6385,7 +6390,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1426861599}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7255,6 +7260,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049234668}
   m_CullTransparentMesh: 1
+--- !u!1 &2094495151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5440198108656894346, guid: 4118cc0592bc25d46a0b61905b9f2a5b, type: 3}
+  m_PrefabInstance: {fileID: 508113125}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2097448582
 GameObject:
   m_ObjectHideFlags: 0
@@ -7304,6 +7314,9 @@ MonoBehaviour:
   enemySpear: {fileID: 673292583}
   enemySpearIcon: {fileID: 335549787}
   enemyHammer: {fileID: 1382546544}
+  playerSword: {fileID: 972708885}
+  playerSwordIcon: {fileID: 535383003}
+  playerSpear: {fileID: 2094495151}
 --- !u!4 &2097448584
 Transform:
   m_ObjectHideFlags: 0
