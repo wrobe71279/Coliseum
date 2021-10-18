@@ -14,7 +14,7 @@ public class Tutorial : MonoBehaviour
     public GameObject WeaponPanel;
     public GameObject TutorialPanel;
     public GameObject TimerPanel;
-    public GameObject LogPanel;
+    //public GameObject logPanel;
 
     //top get the first text the player sees
     public Text inital;
@@ -26,8 +26,8 @@ public class Tutorial : MonoBehaviour
     public GameObject fourth;
     public GameObject next;
 
-    //to display Log in LogText UI
-    public Text logText;
+    //to display Log in ////logText UI
+    //public Text ////logText;
 
     //buttons for menu and game
     public GameObject menu;
@@ -62,8 +62,8 @@ public class Tutorial : MonoBehaviour
              * what happens if u won or lose when attacking
              * dialogue says to try defending
              */
-                logText.text = ("Both sides chose to attack. ");
-                logText.text += ("You used a sword, while your opponent used a spear. You won that round.");
+                ////logText.text = ("Both sides chose to attack. ");
+                ////logText.text += ("You used a sword, while your opponent used a spear. You won that round.");
 
                 y = 2;
 
@@ -86,8 +86,8 @@ public class Tutorial : MonoBehaviour
                  * code to send to gamescene
                  * SceneManager.LoadScene(sceneName: "GameScene");
                  */
-                logText.text = ("Both sides chose to attack. ");
-                logText.text += ("You used a spear, while your opponent used a hammer. You won that round.");
+                ////logText.text = ("Both sides chose to attack. ");
+                //logText.text += ("You used a spear, while your opponent used a hammer. You won that round.");
 
                 cutscene1.Play();
                 StartCoroutine(Cutscene());
@@ -126,8 +126,8 @@ public class Tutorial : MonoBehaviour
              */
             y = 3;
 
-            logText.text = ("You defended from the opponent's attack. ");
-            logText.text += ("You used a sword, while your opponent used a spear. You lost that round.");
+            //logText.text = ("You defended from the opponent's attack. ");
+            //logText.text += ("You used a sword, while your opponent used a spear. You lost that round.");
 
             cutscene2.Play();
             StartCoroutine(Cutscene());
@@ -189,7 +189,7 @@ public class Tutorial : MonoBehaviour
 
         cutscene3.Play();
         StartCoroutine(Cutscene());
-        logText.text = ("You switched weapon to a Spear. But your opponent attacked you");
+        //logText.text = ("You switched weapon to a Spear. But your opponent attacked you");
         inital.text = "Be careful when you swap weapons because your opponent can still attack you. Now let's get revenge, press the attack button.";
         
         //moved to coroutine
@@ -203,7 +203,7 @@ public class Tutorial : MonoBehaviour
     {
         ActionPanel.SetActive(false);
         WeaponPanel.SetActive(false);
-        LogPanel.SetActive(false);
+        //logPanel.SetActive(false);
         TimerPanel.SetActive(false);
 
     }
@@ -212,7 +212,7 @@ public class Tutorial : MonoBehaviour
     {
         ActionPanel.SetActive(true);
         WeaponPanel.SetActive(false);
-        LogPanel.SetActive(true);
+        //logPanel.SetActive(true);
         TimerPanel.SetActive(true);
 
         if(y==2)
