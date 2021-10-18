@@ -105,7 +105,7 @@ public class Tutorial : MonoBehaviour
 
             logText.text = ("You defended from the opponent's attack. ");
             logText.text += ("You used a sword, while your opponent used a spear. You lost that round.");
-            inital.text = "You're Opponent swapped weapons and therefore beat you";
+            inital.text = "When defending, you less glory but can break your opponent's weapon";
 
             first.SetActive(false);
             second.SetActive(false);
@@ -134,7 +134,7 @@ public class Tutorial : MonoBehaviour
             ActionPanel.SetActive(false);
             WeaponPanel.SetActive(true);
 
-            inital.text = "The weapons from left to right are; Hammer, Sword, Spear";
+            inital.text = "The weapons from left to right are; Spear, Hammer, Sword";
 
             first.SetActive(false);
             second.SetActive(false);
