@@ -42,6 +42,7 @@ public class Tutorial : MonoBehaviour
     public PlayableDirector cutscene1;
     public PlayableDirector cutscene2;
     public PlayableDirector cutscene3;
+    public PlayableDirector idle;
 
     //weapon and weapon ui of enemy
     public GameObject enemySpear;
@@ -52,6 +53,11 @@ public class Tutorial : MonoBehaviour
     public GameObject playerSword;
     public GameObject playerSwordIcon;
     public GameObject playerSpear;
+
+    private void Start()
+    {
+        idle.Play();
+    }
 
     public void Attack()
     {
@@ -143,7 +149,7 @@ public class Tutorial : MonoBehaviour
             glorySlider.SetGlory(glory);
 
             cutscene2.Play();
-            StartCoroutine(Cutscene());
+            StartCoroutine(LongCutscene());
 
             inital.text = "When defending, you gain less glory but can break your opponent's weapon";
 
@@ -232,6 +238,7 @@ public class Tutorial : MonoBehaviour
         //logPanel.SetActive(true);
         TimerPanel.SetActive(true);
         PredictionPanel.SetActive(true);
+        idle.Play();
 
         if (y==2)
         {
@@ -267,7 +274,16 @@ public class Tutorial : MonoBehaviour
     {
         CutscenePlays();
 
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
+
+        PostCutscene();
+    }
+
+    IEnumerator LongCutscene()
+    {
+        CutscenePlays();
+
+        yield return new WaitForSecondsRealtime(4);
 
         PostCutscene();
     }
