@@ -16,6 +16,6 @@ public class GlorySlider : MonoBehaviour
     
     public void SetGlory(int glory)
     {
-        slider.value = glory;
+        slider.value = glory * -1 ;
     }
 }
