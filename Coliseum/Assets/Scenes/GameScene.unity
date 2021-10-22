@@ -2349,6 +2349,11 @@ PlayableDirector:
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &523896201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5732626984873317104, guid: 7389b07d0ad7a47478b54b836eb18b66, type: 3}
+  m_PrefabInstance: {fileID: 1413947468}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &525626953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4530,6 +4535,11 @@ Transform:
   m_Father: {fileID: 2146553653}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &999352340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8407147421325825160, guid: 5bc53367bf1164b43aac1baae34e3ce2, type: 3}
+  m_PrefabInstance: {fileID: 1709036606}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1003758619
 GameObject:
   m_ObjectHideFlags: 0
@@ -5058,12 +5068,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
-  Sword: {fileID: 0}
-  Hammer: {fileID: 0}
-  Spear: {fileID: 0}
-  ESword: {fileID: 0}
-  EHammer: {fileID: 0}
-  ESpear: {fileID: 0}
+  Sword: {fileID: 7079823614574790263}
+  Hammer: {fileID: 999352340}
+  Spear: {fileID: 2132330177}
+  ESword: {fileID: 784593767}
+  EHammer: {fileID: 1719731347}
+  ESpear: {fileID: 523896201}
 --- !u!4 &1110285583
 Transform:
   m_ObjectHideFlags: 0
@@ -6330,16 +6340,16 @@ MonoBehaviour:
   attack: 0
   defend: 0
   newWeapon: 0
-  cutscene1: {fileID: 0}
-  cutscene2: {fileID: 0}
-  cutscene3: {fileID: 0}
-  cutscene4: {fileID: 0}
-  cutscene5: {fileID: 0}
-  cutscene6: {fileID: 0}
-  cutscene7: {fileID: 0}
-  cutscene8: {fileID: 0}
-  cutscene9: {fileID: 0}
-  cutscene10: {fileID: 0}
+  cutscene1: {fileID: 1356291718}
+  cutscene2: {fileID: 515424067}
+  cutscene3: {fileID: 1664559453}
+  cutscene4: {fileID: 250405050}
+  cutscene5: {fileID: 22636447}
+  cutscene6: {fileID: 1954139231}
+  cutscene7: {fileID: 248723001}
+  cutscene8: {fileID: 1803534656}
+  cutscene9: {fileID: 472846645}
+  cutscene10: {fileID: 874793975}
   readyNow: 0
 --- !u!4 &1458194101
 Transform:
@@ -7705,6 +7715,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4020596135450379680, guid: 5bc53367bf1164b43aac1baae34e3ce2, type: 3}
   m_PrefabInstance: {fileID: 1709036606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1719731347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8407147421325825160, guid: 5bc53367bf1164b43aac1baae34e3ce2, type: 3}
+  m_PrefabInstance: {fileID: 1366462581}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1726034166
 GameObject:
@@ -9866,6 +9881,11 @@ AudioSource:
 --- !u!4 &2104354261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7282271517269613291, guid: 7389b07d0ad7a47478b54b836eb18b66, type: 3}
+  m_PrefabInstance: {fileID: 1911245195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2132330177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5732626984873317104, guid: 7389b07d0ad7a47478b54b836eb18b66, type: 3}
   m_PrefabInstance: {fileID: 1911245195}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2146553652
