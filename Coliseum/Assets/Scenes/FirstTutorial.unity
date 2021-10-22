@@ -552,6 +552,58 @@ RectTransform:
   m_AnchoredPosition: {x: 245.07, y: -2.4872}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &111573194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111573195}
+  - component: {fileID: 111573196}
+  m_Layer: 0
+  m_Name: Timeline_Idle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &111573195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111573194}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1879896415}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &111573196
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111573194}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: c894a797822f254439150fe4c887e628, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 1630840054940938343, guid: c894a797822f254439150fe4c887e628, type: 2}
+    value: {fileID: 1422119965}
+  - key: {fileID: 815143991227580529, guid: c894a797822f254439150fe4c887e628, type: 2}
+    value: {fileID: 2036929502}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &115966054
 GameObject:
   m_ObjectHideFlags: 0
@@ -7272,7 +7324,7 @@ Animator:
   m_GameObject: {fileID: 1422119963}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 820dbbd86e8b05d479811ea0dc0f8a11, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9770,6 +9822,7 @@ Transform:
   - {fileID: 1216485606}
   - {fileID: 1477842446}
   - {fileID: 337695185}
+  - {fileID: 111573195}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10216,7 +10269,7 @@ Animator:
   m_GameObject: {fileID: 2036929500}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 820dbbd86e8b05d479811ea0dc0f8a11, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10534,6 +10587,7 @@ MonoBehaviour:
   cutscene1: {fileID: 1216485607}
   cutscene2: {fileID: 1477842447}
   cutscene3: {fileID: 337695186}
+  idle: {fileID: 111573196}
   enemySpear: {fileID: 359479558}
   enemySpearIcon: {fileID: 335549787}
   enemyHammer: {fileID: 672703398}

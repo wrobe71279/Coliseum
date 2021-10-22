@@ -92,6 +92,7 @@ public class GameCode : MonoBehaviour
     public PlayableDirector cutscene8;
     public PlayableDirector cutscene9;
     public PlayableDirector cutscene10;
+    public PlayableDirector idle;
 
     //for fuzzy logic
     int turn;
@@ -103,7 +104,9 @@ public class GameCode : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-        
+
+        idle.Play();
+
         //for the user
         thePlayer.Add("sword");
         thePlayer.Add("hammer");
@@ -393,7 +396,7 @@ public class GameCode : MonoBehaviour
                 //breaks own weapon
                 logText.text += ("You used a " + thePlayer[p] + ", against your opponent's " + theComputer[c] + ". You broke your " + thePlayer[p] + " and lost.");
                 cutscene6.Play();
-                StartCoroutine(Cutscene());
+                StartCoroutine(LongCutscene());
                 /*
                 CutscenePlays();
                 PostCutscene();
@@ -447,7 +450,7 @@ public class GameCode : MonoBehaviour
                 //breaks opponent weapon
                 logText.text += ("You used a " + thePlayer[p] + ", and broke your opponent's " + theComputer[c] + ". You won that round");
                 cutscene8.Play();
-                StartCoroutine(Cutscene());
+                StartCoroutine(LongCutscene());
                 /*
                 CutscenePlays();
                 PostCutscene();
@@ -633,13 +636,23 @@ public class GameCode : MonoBehaviour
         //LogPanel.SetActive(true);
         TimerPanel.SetActive(true);
         PredictionPanel.SetActive(true);
+        idle.Play();
     }
 
     IEnumerator Cutscene()
     {
         CutscenePlays();
 
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
+
+        PostCutscene();
+    }
+
+    IEnumerator LongCutscene()
+    {
+        CutscenePlays();
+
+        yield return new WaitForSecondsRealtime(4);
 
         PostCutscene();
     }
