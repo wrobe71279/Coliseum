@@ -28,6 +28,9 @@ public class GameCode : MonoBehaviour
     //showcasing time left to the player
     public Text timerText;
 
+    //to stop other coroutines
+    bool alive = true;
+
     //to trigger SetGlory function in UI
     public GlorySlider glorySlider;
 
@@ -47,6 +50,9 @@ public class GameCode : MonoBehaviour
     public GameObject LogPanel;
     public GameObject TimerPanel;
     public GameObject PredictionPanel;
+    public GameObject GloryPanel;
+    public GameObject PlayerWeaponUI;
+    public GameObject EnemyWeaponUI;
 
     //ui for enemy telegraphy
     public GameObject PredictAttack;
@@ -93,6 +99,8 @@ public class GameCode : MonoBehaviour
     public PlayableDirector cutscene9;
     public PlayableDirector cutscene10;
     public PlayableDirector idle;
+    public PlayableDirector victory;
+    public PlayableDirector defeat;
 
     //for fuzzy logic
     int turn;
@@ -138,24 +146,33 @@ public class GameCode : MonoBehaviour
                     {
                         //possibly a cutscene
                         //change to victory scene
-                        VictoryPanel.SetActive(true);
-                        Time.timeScale = 0;
+                        alive = false;
+                        victory.Play();
+                        StartCoroutine(WinCutscene());
+                        //VictoryPanel.SetActive(true);
+                        //Time.timeScale = 0;
                     }
                     else
                     {
                         availableTime = false;
                         //possibly a cutscene
                         //change to main menu but no menu at this stage
-                        DefeatPanel.SetActive(true);
-                        Time.timeScale = 0;
+                        alive = false;
+                        defeat.Play();
+                        StartCoroutine(DefeatCutscene());
+                        //DefeatPanel.SetActive(true);
+                        //Time.timeScale = 0;
                     }
                 }
 
             }
             else
             {
-                DefeatPanel.SetActive(true);
-                Time.timeScale = 0;
+                alive = false;
+                defeat.Play();
+                StartCoroutine(DefeatCutscene());
+                //DefeatPanel.SetActive(true);
+                //Time.timeScale = 0;
                 //losing animation due to time
             }
         }
@@ -629,14 +646,52 @@ public class GameCode : MonoBehaviour
         PredictionPanel.SetActive(false);
     }
 
+    void FinalCutscenePlays()
+    {
+        ActionPanel.SetActive(false);
+        WeaponPanel.SetActive(false);
+        //LogPanel.SetActive(false);
+        TimerPanel.SetActive(false);
+        PredictionPanel.SetActive(false);
+        GloryPanel.SetActive(false);
+        PlayerWeaponUI.SetActive(false);
+        EnemyWeaponUI.SetActive(false);
+        cutscene1.Stop();
+        cutscene2.Stop();
+        cutscene3.Stop();
+        cutscene4.Stop();
+        cutscene5.Stop();
+        cutscene6.Stop();
+        cutscene7.Stop();
+        cutscene8.Stop();
+        cutscene9.Stop();
+        cutscene10.Stop();
+    }
+
+    void VictoryPostCutscene()
+    {
+        VictoryPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    void DefeatPostCutscene()
+    {
+        DefeatPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
     void PostCutscene()
     {
-        ActionPanel.SetActive(true);
-        WeaponPanel.SetActive(false);
-        //LogPanel.SetActive(true);
-        TimerPanel.SetActive(true);
-        PredictionPanel.SetActive(true);
-        idle.Play();
+        if(alive)
+        {
+            ActionPanel.SetActive(true);
+            WeaponPanel.SetActive(false);
+            //LogPanel.SetActive(true);
+            TimerPanel.SetActive(true);
+            PredictionPanel.SetActive(true);
+            //idle.Play();
+        }
+
     }
 
     IEnumerator Cutscene()
@@ -655,5 +710,23 @@ public class GameCode : MonoBehaviour
         yield return new WaitForSecondsRealtime(4);
 
         PostCutscene();
+    }
+
+    IEnumerator WinCutscene()
+    {
+        FinalCutscenePlays();
+
+        yield return new WaitForSecondsRealtime(6);
+
+        VictoryPostCutscene();
+    }
+
+    IEnumerator DefeatCutscene()
+    {
+        FinalCutscenePlays();
+
+        yield return new WaitForSecondsRealtime(6);
+
+        DefeatPostCutscene();
     }
 }
