@@ -100,6 +100,7 @@ public class GameCode : MonoBehaviour
     public PlayableDirector cutscene10;
     public PlayableDirector idle;
     public PlayableDirector victory;
+    public PlayableDirector defeat;
 
     //for fuzzy logic
     int turn;
@@ -156,16 +157,22 @@ public class GameCode : MonoBehaviour
                         availableTime = false;
                         //possibly a cutscene
                         //change to main menu but no menu at this stage
-                        DefeatPanel.SetActive(true);
-                        Time.timeScale = 0;
+                        alive = false;
+                        defeat.Play();
+                        StartCoroutine(DefeatCutscene());
+                        //DefeatPanel.SetActive(true);
+                        //Time.timeScale = 0;
                     }
                 }
 
             }
             else
             {
-                DefeatPanel.SetActive(true);
-                Time.timeScale = 0;
+                alive = false;
+                defeat.Play();
+                StartCoroutine(DefeatCutscene());
+                //DefeatPanel.SetActive(true);
+                //Time.timeScale = 0;
                 //losing animation due to time
             }
         }
@@ -661,9 +668,15 @@ public class GameCode : MonoBehaviour
         cutscene10.Stop();
     }
 
-    void VictoryCutscene()
+    void VictoryPostCutscene()
     {
         VictoryPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    void DefeatPostCutscene()
+    {
+        DefeatPanel.SetActive(true);
         Time.timeScale = 0;
     }
 
@@ -705,6 +718,15 @@ public class GameCode : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(6);
 
-        VictoryCutscene();
+        VictoryPostCutscene();
+    }
+
+    IEnumerator DefeatCutscene()
+    {
+        FinalCutscenePlays();
+
+        yield return new WaitForSecondsRealtime(6);
+
+        DefeatPostCutscene();
     }
 }

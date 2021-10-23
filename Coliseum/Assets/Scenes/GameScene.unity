@@ -1657,6 +1657,74 @@ PlayableDirector:
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &441756122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 441756123}
+  - component: {fileID: 441756124}
+  m_Layer: 0
+  m_Name: Timeline_Defeat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &441756123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441756122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1242650559}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &441756124
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441756122}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 8c6120a1fcd6a9641baabb98a3438acc, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 6444796437960053508, guid: c4efba0135a7da84a9f0964000676147, type: 2}
+    value: {fileID: 5971976657618597964}
+  - key: {fileID: -5718253080797339867, guid: c4efba0135a7da84a9f0964000676147, type: 2}
+    value: {fileID: 1275470536}
+  - key: {fileID: -3089268415475026337, guid: c4efba0135a7da84a9f0964000676147, type: 2}
+    value: {fileID: 963194229}
+  - key: {fileID: 7465953803332924306, guid: c4efba0135a7da84a9f0964000676147, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -2933496098145493213, guid: c4efba0135a7da84a9f0964000676147, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6444796437960053508, guid: 8c6120a1fcd6a9641baabb98a3438acc, type: 2}
+    value: {fileID: 1275470536}
+  - key: {fileID: -5718253080797339867, guid: 8c6120a1fcd6a9641baabb98a3438acc, type: 2}
+    value: {fileID: 5971976657618597964}
+  - key: {fileID: 7465953803332924306, guid: 8c6120a1fcd6a9641baabb98a3438acc, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -2933496098145493213, guid: 8c6120a1fcd6a9641baabb98a3438acc, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 1123098997940430481, guid: 8c6120a1fcd6a9641baabb98a3438acc, type: 2}
+    value: {fileID: 963194229}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &442105541
 GameObject:
   m_ObjectHideFlags: 0
@@ -4378,7 +4446,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 28.16607, y: 323.0181, z: 359.3226}
+  m_LocalEulerAnglesHint: {x: 30.879, y: 127.9648, z: 0.9244817}
 --- !u!95 &963194229
 Animator:
   serializedVersion: 3
@@ -5464,6 +5532,7 @@ Transform:
   - {fileID: 874793974}
   - {fileID: 1322989171}
   - {fileID: 439530080}
+  - {fileID: 441756123}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6487,6 +6556,7 @@ MonoBehaviour:
   cutscene10: {fileID: 874793975}
   idle: {fileID: 1322989172}
   victory: {fileID: 439530081}
+  defeat: {fileID: 441756124}
   readyNow: 0
 --- !u!4 &1458194101
 Transform:
