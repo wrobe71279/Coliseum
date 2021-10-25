@@ -212,7 +212,23 @@ public class GameCode : MonoBehaviour
                 PredictDefend.SetActive(false);
                 PredictSwitch.SetActive(false);
                 enemyAction = 0;
-                attack++;
+
+                int changeAction = Random.Range(1, 11);
+
+                if (changeAction >= 8)
+                {
+                    attack++;
+                }
+                if (changeAction == 9)
+                {
+                    defend++;
+                }
+                if (changeAction == 10)
+                {
+                    newWeapon++;
+                }
+
+               
             }
             if (enemyAction == 1 || enemyAction == 4)
             {
@@ -221,7 +237,21 @@ public class GameCode : MonoBehaviour
                 PredictDefend.SetActive(true);
                 PredictSwitch.SetActive(false);
                 enemyAction = 1;
-                defend++;
+
+                int changeAction = Random.Range(1, 11);
+
+                if (changeAction >= 8)
+                {
+                    defend++;
+                }
+                if (changeAction == 9)
+                {
+                    attack++;
+                }
+                if (changeAction == 10)
+                {
+                    newWeapon++;
+                }
             }
             
             if (enemyAction == 2)
@@ -230,19 +260,34 @@ public class GameCode : MonoBehaviour
                 PredictAttack.SetActive(false);
                 PredictDefend.SetActive(false);
                 PredictSwitch.SetActive(true);
-                if (chance == 0)
+
+                int changeAction = Random.Range(1, 11);
+
+                if (changeAction >= 8)
                 {
-                    c = 0;
+                    if (chance == 0)
+                    {
+                        c = 0;
+                    }
+                    if (chance == 1)
+                    {
+                        c = 1;
+                    }
+                    if (chance == 2)
+                    {
+                        c = 2;
+                    }
+                    newWeapon++;
                 }
-                if (chance == 1)
+                if (changeAction == 9)
                 {
-                    c = 1;
+                    defend++;
                 }
-                if (chance == 2)
+                if (changeAction == 10)
                 {
-                    c = 2;
+                    attack++;
                 }
-                newWeapon++;
+
             }
         }
         chosen = 1;
