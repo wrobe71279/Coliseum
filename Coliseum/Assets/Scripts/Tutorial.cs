@@ -15,6 +15,7 @@ public class Tutorial : MonoBehaviour
     public GameObject TutorialPanel;
     public GameObject TimerPanel;
     public GameObject PredictionPanel;
+    public GameObject WeaponTriangle;
     //public GameObject logPanel;
 
     //glory ui
@@ -228,6 +229,7 @@ public class Tutorial : MonoBehaviour
         //logPanel.SetActive(false);
         TimerPanel.SetActive(false);
         PredictionPanel.SetActive(false);
+        WeaponTriangle.SetActive(false);
 
     }
 
@@ -238,7 +240,8 @@ public class Tutorial : MonoBehaviour
         //logPanel.SetActive(true);
         TimerPanel.SetActive(true);
         PredictionPanel.SetActive(true);
-        idle.Play();
+        WeaponTriangle.SetActive(true);
+        //idle.Play();
 
         if (y==2)
         {

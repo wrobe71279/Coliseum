@@ -53,6 +53,7 @@ public class GameCode : MonoBehaviour
     public GameObject GloryPanel;
     public GameObject PlayerWeaponUI;
     public GameObject EnemyWeaponUI;
+    public GameObject WeaponTriangle;
 
     //ui for enemy telegraphy
     public GameObject PredictAttack;
@@ -458,7 +459,7 @@ public class GameCode : MonoBehaviour
                 //breaks own weapon
                 logText.text += ("You used a " + thePlayer[p] + ", against your opponent's " + theComputer[c] + ". You broke your " + thePlayer[p] + " and lost.");
                 cutscene6.Play();
-                StartCoroutine(LongCutscene());
+                StartCoroutine(LongWeaponBreak());
                 /*
                 CutscenePlays();
                 PostCutscene();
@@ -527,7 +528,7 @@ public class GameCode : MonoBehaviour
                 glorySlider.SetGlory(glory);
                 logText.text += ("You used a " + thePlayer[p] + ", but your opponent's " + theComputer[c] + " defends and breaks your " + thePlayer[p] + ".");
                 cutscene9.Play();
-                StartCoroutine(Cutscene());
+                StartCoroutine(ShortWeaponBreak());
                 /*
                 CutscenePlays();
                 PostCutscene();
@@ -689,6 +690,7 @@ public class GameCode : MonoBehaviour
         //LogPanel.SetActive(false);
         TimerPanel.SetActive(false);
         PredictionPanel.SetActive(false);
+        WeaponTriangle.SetActive(false);
     }
 
     void FinalCutscenePlays()
@@ -698,6 +700,7 @@ public class GameCode : MonoBehaviour
         //LogPanel.SetActive(false);
         TimerPanel.SetActive(false);
         PredictionPanel.SetActive(false);
+        WeaponTriangle.SetActive(false);
         GloryPanel.SetActive(false);
         PlayerWeaponUI.SetActive(false);
         EnemyWeaponUI.SetActive(false);
@@ -734,9 +737,19 @@ public class GameCode : MonoBehaviour
             //LogPanel.SetActive(true);
             TimerPanel.SetActive(true);
             PredictionPanel.SetActive(true);
+            WeaponTriangle.SetActive(true);
             //idle.Play();
         }
 
+    }
+
+    void WeaponBreakPostCutscene()
+    {
+        ActionPanel.SetActive(false);
+        WeaponPanel.SetActive(true);
+        TimerPanel.SetActive(true);
+        PredictionPanel.SetActive(true);
+        WeaponTriangle.SetActive(true);
     }
 
     IEnumerator Cutscene()
@@ -773,5 +786,23 @@ public class GameCode : MonoBehaviour
         yield return new WaitForSecondsRealtime(6);
 
         DefeatPostCutscene();
+    }
+
+    IEnumerator ShortWeaponBreak()
+    {
+        CutscenePlays();
+
+        yield return new WaitForSecondsRealtime(3);
+
+        WeaponBreakPostCutscene();
+    }
+
+    IEnumerator LongWeaponBreak()
+    {
+        CutscenePlays();
+
+        yield return new WaitForSecondsRealtime(4);
+
+        WeaponBreakPostCutscene();
     }
 }
