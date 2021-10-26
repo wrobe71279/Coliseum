@@ -12,6 +12,7 @@ public class ScalingButton : MonoBehaviour
 
     void OnMouseEnter()
     {
+        Debug.Log("Hi");
         iTween.ScaleTo(gameObject, iTween.Hash(
             "x", 2, "y", 2, 
             "time", 1.2f, 
@@ -19,6 +20,7 @@ public class ScalingButton : MonoBehaviour
     }
     void OnMouseExit()
     {
+        Debug.Log("Bye");
         iTween.ScaleTo(gameObject, new Vector3(1, 1, 0), 0.8f);
     }
 }
